@@ -1,121 +1,166 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>SMS Manager — Yasal Bilgilendirme ve Gizlilik</title>
+<title>Legal Center — SMS Manager</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{--ink:#0d0d0d;--bg:#f0ede8;--volt:#c6ff00;--teal:#00e5b0;--border:#dedad4;--dark:#080e1c;--sans:'DM Sans',sans-serif;--syne:'Syne',sans-serif}
 body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.6;margin:0}
-.container{max-width:1000px;margin:0 auto;padding:40px 7%}
+.container{max-width:1100px;margin:0 auto;padding:40px 5%}
 
-/* Navigasyon Sekmeleri */
+/* Language Switcher */
+.lang-bar {display: flex; justify-content: flex-end; gap: 10px; margin-bottom: 20px;}
+.lang-btn {background: #fff; border: 1px solid var(--border); padding: 6px 15px; border-radius: 20px; cursor: pointer; font-size: 12px; font-weight: bold; transition: 0.3s;}
+.lang-btn.active {background: var(--dark); color: #fff; border-color: var(--dark);}
+
+/* Navigation Tabs */
 .tabs {display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 30px; border-bottom: 1px solid var(--border); padding-bottom: 20px;}
 .tab-btn {background: #fff; border: 1px solid var(--border); padding: 10px 20px; border-radius: 8px; cursor: pointer; font-family: var(--syne); font-size: 13px; transition: 0.3s;}
 .tab-btn.active {background: var(--dark); color: #fff; border-color: var(--dark);}
 
-/* İçerik Alanları */
+/* Content Sections */
 .content-section {display: none; background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 40px; box-shadow: 0 4px 12px rgba(0,0,0,0.03);}
 .content-section.active {display: block;}
 
+/* Text Styles */
 .warning-box{background:#fff5f5; border-left:4px solid #ff4d4d; padding:20px; margin:20px 0; font-size:14px; color:#852d2d}
 .success-box{background:#f0fff4; border-left:4px solid var(--teal); padding:20px; margin:20px 0; font-size:14px; color:#234e33}
-h2 {font-family: var(--syne); font-size: 24px; margin-bottom: 20px; color: var(--dark);}
-h3 {font-family: var(--syne); font-size: 17px; margin-top: 25px; color: var(--dark); border-bottom: 2px solid var(--volt); display: inline-block;}
+h2 {font-family: var(--syne); font-size: 26px; margin-bottom: 20px; color: var(--dark);}
+h3 {font-family: var(--syne); font-size: 18px; margin-top: 30px; color: var(--dark); border-bottom: 2px solid var(--volt); display: inline-block;}
 p, li {font-size: 14px; color: #444; margin-bottom: 12px;}
 ul {padding-left: 20px;}
-.meta {font-size: 12px; color: #888; text-align: center; margin-bottom: 40px;}
+.lang-tr, .lang-en {display: none;}
+[data-lang="tr"] .lang-tr {display: block;}
+[data-lang="en"] .lang-en {display: block;}
 </style>
 </head>
-<body>
+<body data-lang="en">
 
 <div class="container">
+    <div class="lang-bar">
+        <button class="lang-btn active" onclick="setLang('en')">English</button>
+        <button class="lang-btn" onclick="setLang('tr')">Türkçe</button>
+    </div>
+
     <div style="text-align: center; margin-bottom: 30px;">
         <h1 style="font-family: var(--syne); margin-bottom: 5px;">SMS Manager</h1>
-        <p class="meta">Yasal Bilgilendirme Merkezi (Legal Center) <br> Son Güncelleme: 2025</p>
+        <p class="lang-en" style="font-size: 12px; color: #888;">Legal Compliance & Privacy Center (US/UK/AU/TR Standards)</p>
+        <p class="lang-tr" style="font-size: 12px; color: #888;">Yasal Uyum ve Gizlilik Merkezi (US/UK/AU/TR Standartları)</p>
     </div>
 
     <div class="tabs">
-        <button class="tab-btn active" onclick="showTab('privacy')">Gizlilik Politikası</button>
-        <button class="tab-btn" onclick="showTab('eula')">Kullanıcı Sözleşmesi (EULA)</button>
-        <button class="tab-btn" onclick="showTab('kvkk')">Aydınlatma Metni</button>
-        <button class="tab-btn" onclick="showTab('consent')">Açık Rıza</button>
-        <button class="tab-btn" onclick="showTab('disclaimer')">Sorumluluk Reddi</button>
+        <button class="tab-btn active" onclick="showTab('privacy')">
+            <span class="lang-en">Privacy Policy</span><span class="lang-tr">Gizlilik Politikası</span>
+        </button>
+        <button class="tab-btn" onclick="showTab('eula')">
+            <span class="lang-en">EULA (Terms)</span><span class="lang-tr">Kullanıcı Sözleşmesi</span>
+        </button>
+        <button class="tab-btn" onclick="showTab('kvkk')">
+            <span class="lang-en">Disclosure (GDPR)</span><span class="lang-tr">Aydınlatma Metni</span>
+        </button>
+        <button class="tab-btn" onclick="showTab('disclaimer')">
+            <span class="lang-en">Disclaimer</span><span class="lang-tr">Sorumluluk Reddi</span>
+        </button>
     </div>
 
     <div id="privacy" class="content-section active">
-        <h2>Gizlilik Politikası (Privacy Policy)</h2>
-        <p>SMS Manager uygulaması, Erhan Güngör tarafından geliştirilmiştir. Gizliliğinize büyük önem veriyoruz.</p>
-        <h3>1. Topladığımız Veriler</h3>
-        <p><strong>Cihazda Yerel İşlenenler:</strong> Gönderici adları, numaralar ve işlem logları. Bu veriler hiçbir şekilde sunucularımıza gönderilmez veya bulutta saklanmaz.</p>
-        <p><strong>Otomatik Toplananlar:</strong> Uygulama reklam SDK'sı veya izleme kütüphanesi içermez. Konum, kamera veya mikrofon erişimi talep edilmez.</p>
-        <h3>2. Üçüncü Taraf Hizmetleri</h3>
-        <p>Uygulama, Google Play veya Apple App Store üzerinden dağıtılır. Bu platformların kendi politikaları geçerlidir. Uygulama içi satın alma mevcutsa, ödeme bilgileri tarafımızca işlenmez.</p>
-        <div class="success-box">Verileriniz hiçbir üçüncü tarafa satılmaz veya ticari amaçla kullanılmaz.</div>
-        <h3>3. Çocukların Gizliliği</h3>
-        <p>Uygulama 13 yaş altı kişilere yönelik değildir. Bu yaş grubundan veri toplandığı fark edilirse derhal silinecektir.</p>
+        <div class="lang-en">
+            <h2>Privacy Policy</h2>
+            <p><strong>Last Updated: 2026</strong> | Developer: Erhan Güngör</p>
+            <h3>1. Introduction</h3>
+            <p>SMS Manager is committed to protecting your privacy. This policy covers compliance with the UK GDPR, Australian Privacy Act 1988, and US State laws (CCPA/CPRA).</p>
+            <div class="success-box"><strong>Zero-Cloud Policy:</strong> We do not store, upload, or sell your SMS data. All processing occurs locally on your device.</div>
+            <h3>2. Data Collection and Use</h3>
+            <p>We process the following data locally to provide core functionality:</p>
+            <ul>
+                <li>Sender IDs/Numbers (for filtering).</li>
+                <li>SMS Body Content (only processed by local logic for forwarding/blocking).</li>
+                <li>Forwarding Target Numbers.</li>
+            </ul>
+            <p><strong>Note for California (US) Residents:</strong> We do not "Sell" or "Share" your personal information as defined by the CCPA.</p>
+            <h3>3. International Compliance</h3>
+            <p><strong>UK & EU (GDPR):</strong> The legal basis for processing is the performance of a contract (Art. 6(1)(b)). You have the right to access and delete your local logs.</p>
+            <p><strong>Australia:</strong> We comply with the Australian Privacy Principles. Data is handled strictly within the bounds of your mobile device.</p>
+        </div>
+        <div class="lang-tr">
+            <h2>Gizlilik Politikası</h2>
+            <p><strong>Son Güncelleme: 2026</strong> | Geliştirici: Erhan Güngör</p>
+            <h3>1. Giriş</h3>
+            <p>SMS Manager, gizliliğinizi korumayı taahhüt eder. Bu politika KVKK ve uluslararası standartlarla uyumludur.</p>
+            <div class="success-box"><strong>Sıfır Bulut Politikası:</strong> Verilerinizi saklamıyoruz, yüklemiyoruz veya satmıyoruz. Tüm işlemler cihazınızda gerçekleşir.</div>
+            <h3>2. Veri Toplama</h3>
+            <p>Uygulama, SMS gönderici bilgileri ve içeriğini sadece yerel engelleme ve yönlendirme kuralları için işler.</p>
+        </div>
     </div>
 
     <div id="eula" class="content-section">
-        <h2>Son Kullanıcı Lisans Sözleşmesi (EULA)</h2>
-        <p><strong>Taraflar:</strong> Erhan Güngör ("Uygulama Sahibi") ve Kullanıcı.</p>
-        <p><strong>Lisans:</strong> Ticari olmayan, kişisel kullanım için sınırlı ve geri alınabilir lisans hakkı tanınır. 5846 sayılı FSEK kapsamında korunmaktadır.</p>
-        <p><strong>Kısıtlamalar:</strong> Tersine mühendislik yapmak, başkasının haberleşmesini izinsiz takip etmek yasaktır.</p>
-        <p><strong>Fesih:</strong> Kullanıcı uygulamayı silerek her zaman sözleşmeyi feshedebilir.</p>
+        <div class="lang-en">
+            <h2>End User License Agreement (EULA)</h2>
+            <h3>1. License Grant</h3>
+            <p>This is a legal agreement between you and Erhan Güngör. We grant you a personal, non-exclusive, non-transferable license to use the app strictly for personal use.</p>
+            <h3>2. Prohibited Acts</h3>
+            <p>You may not: (a) reverse engineer the app; (b) use the app to intercept communication of third parties without consent; (c) use the app for illegal automated SMS spamming.</p>
+            <div class="warning-box"><strong>US Wiretap Act / UK Investigatory Powers Act:</strong> Using this app to monitor someone else's phone without their legal consent is a criminal offense.</div>
+        </div>
+        <div class="lang-tr">
+            <h2>Son Kullanıcı Lisans Sözleşmesi (EULA)</h2>
+            <p>Bu sözleşme, Erhan Güngör ile Kullanıcı arasındadır. Ticari olmayan kişisel kullanım için sınırlı bir lisans verilmektedir. Uygulamanın kötüye kullanımı sözleşmenin derhal feshine neden olur.</p>
+        </div>
     </div>
 
     <div id="kvkk" class="content-section">
-        <h2>KVKK Aydınlatma Metni</h2>
-        <p><strong>Veri Sorumlusu:</strong> Erhan Güngör | info@applicalgap.com</p>
-        <h3>Veri İşleme Amaçları</h3>
-        <ul>
-            <li>SMS engelleme ve yönlendirme kurallarının uygulanması.</li>
-            <li>İşlemlerin cihaz üzerinde loglanması ve teknik hataların düzeltilmesi.</li>
-        </ul>
-        <h3>Veri Saklama</h3>
-        <p>Veriler kullanıcı uygulamayı kaldırana kadar cihazda kalır. Sunucu tarafında hiçbir veri saklanmamaktadır.</p>
-        <h3>Haklarınız (Madde 11)</h3>
-        <p>Verilerinizin işlenip işlenmediğini öğrenme ve silme hakkına sahipsiniz. Başvurular 30 gün içinde yanıtlanır.</p>
-    </div>
-
-    <div id="consent" class="content-section">
-        <h2>Açık Rıza Metni</h2>
-        <p>SMS Yönlendirme özelliği, kişisel iletişim verilerinin (SMS içeriği dahil) kullanıcı tarafından belirlenen üçüncü bir tarafa (hedef numara) aktarılmasını içerir.</p>
-        <div class="success-box">
-            <strong>Beyan:</strong> "Yönlendirme kurallarını aktif ederek, mesajlarımın belirlediğim hedef numaraya iletilmesine ve bu işlemin cihazımda loglanmasına özgür irademle ONAY VERİYORUM."
+        <div class="lang-en">
+            <h2>Disclosure & Data Rights</h2>
+            <h3>Your Rights (UK/AU/US)</h3>
+            <p>Regardless of your location, you have the following rights over the data processed by the app:</p>
+            <ul>
+                <li><strong>Right to be Informed:</strong> Knowing that processing is strictly local.</li>
+                <li><strong>Right to Erasure:</strong> You can delete all logs and rules by clearing app data or uninstalling.</li>
+                <li><strong>Right to Data Portability:</strong> Local logs are accessible via the app interface.</li>
+            </ul>
         </div>
-        <p>Rızanızı dilediğiniz zaman ayarlar bölümünden geri alabilirsiniz.</p>
+        <div class="lang-tr">
+            <h2>KVKK Aydınlatma Metni</h2>
+            <p>Veri Sorumlusu: Erhan Güngör. Verileriniz KVKK Madde 5 uyarınca "Sözleşmenin İfası" gereği işlenmektedir. Verileriniz sunucularımıza aktarılmamakta, sadece cihazınızda kalmaktadır.</p>
+        </div>
     </div>
 
     <div id="disclaimer" class="content-section">
-        <h2>Sorumluluk Reddi ve Yasal Uyarı</h2>
-        <div class="warning-box">
-            <strong>YASAL UYARI:</strong> TCK Madde 132-134 uyarınca; haberleşmenin gizliliğini ihlal etmek hapis cezası gerektiren bir suçtur. Uygulamanın üçüncü kişilerin rızası dışında kullanılması durumunda tüm sorumluluk kullanıcıya aittir.
+        <div class="lang-en">
+            <h2>Disclaimer of Liability</h2>
+            <div class="warning-box">
+                <strong>LEGAL WARNING:</strong> You are solely responsible for complying with the <strong>TCPA (US)</strong> and <strong>Spam Act (AU)</strong>. If you forward messages to a third party, you must ensure you have the legal right or consent to do so.
+            </div>
+            <h3>No Warranty</h3>
+            <p>The app is provided "AS IS". We are not responsible for carrier charges, data breaches occurring on the recipient's phone, or missed messages due to software failure.</p>
         </div>
-        <h3>Geliştirici Sorumsuzluğu</h3>
-        <ul>
-            <li>Hatalı yönlendirme numarası girişi sonucu oluşacak veri sızıntıları.</li>
-            <li>Operatör tarifeniz üzerinden yansıyacak SMS gönderim maliyetleri.</li>
-            <li>Uygulamanın hukuka aykırı biçimde kötüye kullanımı.</li>
-        </ul>
-        <p>Uyuşmazlıklarda İstanbul Mahkemeleri ve İcra Daireleri yetkilidir.</p>
+        <div class="lang-tr">
+            <h2>Sorumluluk Reddi</h2>
+            <div class="warning-box">
+                <strong>YASAL UYARI:</strong> SMS yönlendirme özelliği operatör ücretlerine tabidir. Hatalı numara girişi veya hukuka aykırı kullanımdan doğacak tüm sorumluluk kullanıcıya aittir.
+            </div>
+            <p>Uyuşmazlık durumunda İstanbul Mahkemeleri yetkilidir.</p>
+        </div>
     </div>
 
-    <div style="margin-top: 50px; text-align: center;">
-        <a href="mailto:info@applicalgap.com" style="color: var(--teal); font-weight: bold; text-decoration: none;">info@applicalgap.com</a>
-    </div>
 </div>
 
 <script>
-function showTab(tabId) {
-    document.querySelectorAll('.content-section').forEach(section => section.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-    
-    document.getElementById(tabId).classList.add('active');
+function setLang(lang) {
+    document.body.setAttribute('data-lang', lang);
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.innerText.toLowerCase().includes(lang));
+    });
+}
+
+function showTab(id) {
+    document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
     event.currentTarget.classList.add('active');
 }
 </script>
-
 </body>
 </html>
