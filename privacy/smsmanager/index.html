@@ -16,11 +16,12 @@ body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1
 .legal-header:hover {background: #fafafa;}
 .legal-header h2 {margin: 0; font-family: var(--syne); font-size: 18px; color: var(--dark);}
 .legal-content {padding: 0 25px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; background: #fff; border-top: 0 solid var(--border);}
-.legal-section.active .legal-content {max-height: 5000px; padding: 25px; border-top-width: 1px;}
+.legal-section.active .legal-content {max-height: 10000px; padding: 25px; border-top-width: 1px;}
 .legal-section.active .legal-header {background: var(--dark); color: #fff;}
 .legal-section.active .legal-header h2 {color: #fff;}
 
 .warning-box{background:#fff5f5; border-left:4px solid #ff4d4d; padding:15px; margin:20px 0; font-size:14px; color:#852d2d}
+.success-box{background:#f0fff4; border-left:4px solid var(--teal); padding:15px; margin:20px 0; font-size:14px; color:#234e33}
 h3 {font-family: var(--syne); font-size: 16px; margin-top: 25px; color: var(--dark); border-bottom: 1px solid var(--volt); display: inline-block;}
 p, li {font-size: 14px; color: #444; margin-bottom: 12px;}
 .meta-info {font-size: 12px; color: #888; margin-bottom: 30px; text-align: center;}
@@ -32,27 +33,22 @@ p, li {font-size: 14px; color: #444; margin-bottom: 12px;}
 
 <div class="container">
     <div style="text-align: center; margin-bottom: 40px;">
-        <h1 style="font-family: var(--syne); margin-bottom: 10px;">Yasal Mevzuat</h1>
-        <p class="meta-info">SMS Manager Uygulaması Kullanıcı Bilgilendirme Merkezi<br>Son Güncelleme: 2026</p>
+        <h1 style="font-family: var(--syne); margin-bottom: 10px;">Yasal Mevzuat ve Politikalar</h1>
+        <p class="meta-info">SMS Manager (Applicalgap) Kullanıcı Bilgilendirme Merkezi<br>Versiyon 1.1 - 2026</p>
     </div>
 
     <div class="legal-section">
         <div class="legal-header" onclick="toggleSection(this)">
-            <h2>1. Son Kullanıcı Lisans Sözleşmesi (EULA)</h2>
+            <h2>1. Son Kullanıcı Lisans ve Kullanım Sözleşmesi (EULA)</h2>
             <span class="icon">▼</span>
         </div>
         <div class="legal-content">
-            <p>Bu sözleşme, Erhan Güngör ("Uygulama Sahibi") ile uygulamayı kullanan gerçek kişi ("Kullanıcı") arasındadır.</p>
-            <h3>Lisans ve Kullanım</h3>
-            <p>Uygulama Sahibi, Kullanıcıya ticari olmayan, kişisel kullanım için münhasır olmayan ve geri alınabilir bir lisans tanımaktadır. Bu lisans, uygulamanın kopyalanmasına veya kaynak kodunun değiştirilmesine izin vermez.</p>
-            <h3>Kullanım Kısıtlamaları</h3>
-            <p>Uygulama, yalnızca Kullanıcının kendi cihazında ve kendi adına gelen SMS'leri yönetmesi için geliştirilmiştir. Aşağıdaki eylemler kesinlikle yasaktır:</p>
-            <ul>
-                <li>Üçüncü kişilerin haberleşmesini gizlice izlemek.</li>
-                <li>Uygulamayı suç teşkil edecek faaliyetler için aracı kılmak.</li>
-                <li>Uygulamanın SMS yönlendirme özelliğini, rızası olmayan kişilere veri aktarmak için kullanmak.</li>
-            </ul>
-            <div class="warning-box">Sözleşmenin ihlali durumunda Uygulama Sahibi, kullanıcının erişimini herhangi bir bildirimde bulunmaksızın sonlandırma hakkını saklı tutar.</div>
+            <p><strong>1. Taraflar:</strong> Geliştirici Erhan Güngör ("Uygulama Sahibi") ile uygulamayı indiren/kullanan gerçek kişi ("Kullanıcı") arasındadır.</p>
+            <p><strong>2. Lisans:</strong> Kullanıcıya ticari olmayan, kişisel kullanım için münhasır olmayan, devredilemez ve geri alınabilir bir lisans tanınmaktadır. 5846 Sayılı Fikir ve Sanat Eserleri Kanunu kapsamında tüm haklar saklıdır.</p>
+            <p><strong>3. Uygulamanın Amacı:</strong> Belirli gönderici isimlerine göre engelleme, tanımlanmış bir numaraya SMS yönlendirme ve yerel log tutma işlevlerini sunar.</p>
+            <p><strong>4. Kullanım Kısıtlamaları:</strong> Üçüncü kişilerin haberleşmesini gizlice izlemek, uygulamayı suç faaliyetlerinde kullanmak veya tersine mühendislik yapmak yasaktır.</p>
+            <p><strong>5. Sorumsuzluk Kaydı:</strong> Uygulama "olduğu gibi" sunulmaktadır. Geliştirici; kesintisiz çalışma veya belirli bir amaca uygunluk garantisi vermez. Google Play/App Store kaynaklı sorunlardan sorumlu tutulamaz.</p>
+            <p><strong>6. Fesih:</strong> Kullanıcı uygulamayı silerek sözleşmeyi feshedebilir. İhlal durumunda Uygulama Sahibi erişimi önceden bildirmeksizin sonlandırabilir.</p>
         </div>
     </div>
 
@@ -62,25 +58,26 @@ p, li {font-size: 14px; color: #444; margin-bottom: 12px;}
             <span class="icon">▼</span>
         </div>
         <div class="legal-content">
-            <p>Veri Sorumlusu: Erhan Güngör | İletişim: info@applicalgap.com</p>
-            <h3>İşlenen Veriler ve Amaç</h3>
-            <p>Uygulama kapsamında işlenen veriler (numaralar, filtreleme kuralları ve işlem günlükleri) münhasıran uygulamanın temel fonksiyonlarının (engelleme ve yönlendirme) yerine getirilmesi amacıyla işlenmektedir.</p>
-            <h3>Veri Saklama ve Yerellik</h3>
-            <p><strong>Önemli:</strong> SMS içerikleri ve meta veriler merkezi bir sunucuya iletilmez. Tüm veriler yalnızca kullanıcının kendi cihazında yerel olarak saklanır. Uygulama silindiğinde bu yerel veriler de cihazdan temizlenir.</p>
-            <h3>Haklarınız</h3>
-            <p>KVKK Madde 11 uyarınca, verilerinizin işlenip işlenmediğini öğrenme, düzeltme talep etme ve silinmesini isteme hakkına sahipsiniz. Başvurularınızı info@applicalgap.com adresine iletebilirsiniz.</p>
+            <p><strong>Veri Sorumlusu:</strong> Erhan Güngör | info@applicalgap.com</p>
+            <p><strong>1. İşlenen Veriler:</strong> Gönderici adı/numarası, SMS meta verisi (zaman damgası) ve yönlendirme hedef numarası. SMS içeriği sunuculara iletilmez.</p>
+            <p><strong>2. İşleme Amacı:</strong> Engelleme/yönlendirme kurallarının çalıştırılması ve teknik hataların düzeltilmesi.</p>
+            <p><strong>3. Hukuki Dayanak:</strong> KVKK Madde 5/2(c) - Sözleşmenin ifası ve Madde 5/2(f) - Meşru menfaat.</p>
+            <p><strong>4. Veri Aktarımı:</strong> Veriler sunucu taraflı saklanmaz. Sadece kullanıcı yönlendirme özelliğini açtığında, veriler operatör üzerinden kullanıcının kendi belirlediği numaraya aktarılır.</p>
+            <p><strong>5. Saklama Süresi:</strong> Kullanıcı kuralları silene veya uygulamayı kaldırana kadar cihazda kalır.</p>
+            <p><strong>6. Haklarınız (Madde 11):</strong> Verilerinizin işlenip işlenmediğini öğrenme, silinmesini veya düzeltilmesini talep etme hakkınız saklıdır.</p>
+            <div class="success-box"><strong>Sıfır Sunucu Politikası:</strong> Uygulama merkezi bir veritabanı kullanmaz; tüm kişisel verileriniz telefonunuzda şifrelenmiş olarak kalır.</div>
         </div>
     </div>
 
     <div class="legal-section">
         <div class="legal-header" onclick="toggleSection(this)">
-            <h2>3. Açık Rıza Beyanı (SMS Yönlendirme)</h2>
+            <h2>3. Açık Rıza Metni (Veri Aktarımı)</h2>
             <span class="icon">▼</span>
         </div>
         <div class="legal-content">
-            <p>SMS Yönlendirme özelliği, kişisel veri niteliğindeki SMS içeriklerinin kullanıcı tarafından belirlenen başka bir numaraya aktarılmasını içerir. Bu işlem KVKK Madde 5/1 uyarınca açık rızaya tabidir.</p>
-            <p><strong>Beyan:</strong> Uygulama içinden yönlendirme kurallarını aktif ederek; gelen SMS içeriklerinin (gönderici, zaman ve body) operatör şebekesi üzerinden seçtiğim hedef numaraya iletilmesine, bu iletimin risklerini bildiğime ve bu işleme özgür irademle onay verdiğime beyan ederim.</p>
-            <p>Rızanızı dilediğiniz zaman özelliği kapatarak veya uygulamayı silerek geri alabilirsiniz.</p>
+            <p>6698 Sayılı KVKK Madde 5/1 uyarınca;</p>
+            <p>SMS Yönlendirme özelliğini etkinleştirdiğimde; gelen SMS'lerin (gönderici ve içerik dahil) kendi tanımladığım hedef numaraya iletilmesine, bu iletişimin operatör şebekesi üzerinden gerçekleşmesine ve bu işlemin cihazımda loglanmasına <strong>özgür irademle onay veriyorum.</strong></p>
+            <p><em>Not: Rızanızı dilediğiniz zaman ayarlar bölümünden geri alabilirsiniz.</em></p>
         </div>
     </div>
 
@@ -90,34 +87,27 @@ p, li {font-size: 14px; color: #444; margin-bottom: 12px;}
             <span class="icon">▼</span>
         </div>
         <div class="legal-content">
-            <h3>Hukuki Sorumsuzluk Kaydı</h3>
-            <p>Uygulama "olduğu gibi" sunulmaktadır. Geliştirici, uygulamanın kesintisiz çalışacağını veya her türlü spam/mesajı %100 doğrulukla filtreleyeceğini garanti etmez.</p>
-            <h3>TCK ve Özel Hayatın Gizliliği</h3>
             <div class="warning-box">
-                Türk Ceza Kanunu Madde 132-134 uyarınca; başkasına ait haberleşme içeriklerinin izinsiz izlenmesi suçtur. Kullanıcı, uygulamayı üçüncü şahısların haklarını ihlal edecek şekilde kullanmayacağını taahhüt eder. Aksi durumda tüm cezai sorumluluk kullanıcıya aittir.
+                <strong>TCK UYARISI:</strong> Türk Ceza Kanunu Madde 132-134 uyarınca; kişiler arasındaki haberleşmenin gizliliğini ihlal etmek 2 yıldan 5 yıla kadar hapis cezası gerektirir. Uygulamanın başkasına ait cihazlara gizlice kurulmasından doğacak tüm cezai sorumluluk kullanıcıya aittir.
             </div>
-            <h3>Maddi Sorumluluk</h3>
-            <p>SMS yönlendirme özelliği operatör tarifeniz üzerinden ücretlendirilir. Bu işlemden doğacak fatura bedellerinden geliştirici sorumlu tutulamaz.</p>
+            <h3>Sorumsuzluk Maddeleri:</h3>
+            <ul>
+                <li><strong>Operatör Maliyetleri:</strong> Yönlendirme işlemi SMS tarifeniz üzerinden ücretlendirilir. Geliştirici maddi kayıplardan sorumlu değildir.</li>
+                <li><strong>Hatalı Yönlendirme:</strong> Kullanıcının hedef numarayı yanlış girmesi sonucu oluşacak veri sızıntılarından kullanıcı sorumludur.</li>
+                <li><strong>Yetkili Makamlar:</strong> Adli makamlardan gelen usulüne uygun taleplerde Geliştirici tam işbirliği yapacaktır.</li>
+            </ul>
+            <p><strong>Yetkili Mahkeme:</strong> İstanbul (Çağlayan) Mahkemeleri ve İcra Daireleri.</p>
         </div>
     </div>
 
-    <div style="margin-top: 50px; text-align: center; border-top: 1px solid var(--border); padding-top: 20px;">
-        <p style="font-size: 13px;">Uyuşmazlık durumunda İstanbul (Çağlayan) Mahkemeleri yetkilidir.</p>
-        <a href="mailto:info@applicalgap.com" style="color: var(--teal); text-decoration: none; font-weight: bold;">info@applicalgap.com</a>
-    </div>
 </div>
 
 <script>
 function toggleSection(header) {
     const section = header.parentElement;
     const isActive = section.classList.contains('active');
-    
-    // Diğerlerini kapat (Opsiyonel: Eğer sadece birinin açık kalmasını istiyorsanız bu bloğu tutun)
     document.querySelectorAll('.legal-section').forEach(s => s.classList.remove('active'));
-    
-    if (!isActive) {
-        section.classList.add('active');
-    }
+    if (!isActive) { section.classList.add('active'); }
 }
 </script>
 
