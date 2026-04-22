@@ -3,111 +3,117 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>SMS Manager — Yasal Mevzuat ve Politikalar</title>
+<title>SMS Manager — Yasal Bilgilendirme ve Gizlilik</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{--ink:#0d0d0d;--bg:#f0ede8;--volt:#c6ff00;--teal:#00e5b0;--border:#dedad4;--dark:#080e1c;--sans:'DM Sans',sans-serif;--syne:'Syne',sans-serif}
 body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.6;margin:0}
-.container{max-width:900px;margin:0 auto;padding:40px 7%}
+.container{max-width:1000px;margin:0 auto;padding:40px 7%}
 
-/* Akordiyon Stilleri */
-.legal-section {margin-bottom: 15px; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: #fff;}
-.legal-header {background: #fff; padding: 20px 25px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: 0.3s;}
-.legal-header:hover {background: #fafafa;}
-.legal-header h2 {margin: 0; font-family: var(--syne); font-size: 18px; color: var(--dark);}
-.legal-content {padding: 0 25px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; background: #fff; border-top: 0 solid var(--border);}
-.legal-section.active .legal-content {max-height: 10000px; padding: 25px; border-top-width: 1px;}
-.legal-section.active .legal-header {background: var(--dark); color: #fff;}
-.legal-section.active .legal-header h2 {color: #fff;}
+/* Navigasyon Sekmeleri */
+.tabs {display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 30px; border-bottom: 1px solid var(--border); padding-bottom: 20px;}
+.tab-btn {background: #fff; border: 1px solid var(--border); padding: 10px 20px; border-radius: 8px; cursor: pointer; font-family: var(--syne); font-size: 13px; transition: 0.3s;}
+.tab-btn.active {background: var(--dark); color: #fff; border-color: var(--dark);}
 
-.warning-box{background:#fff5f5; border-left:4px solid #ff4d4d; padding:15px; margin:20px 0; font-size:14px; color:#852d2d}
-.success-box{background:#f0fff4; border-left:4px solid var(--teal); padding:15px; margin:20px 0; font-size:14px; color:#234e33}
-h3 {font-family: var(--syne); font-size: 16px; margin-top: 25px; color: var(--dark); border-bottom: 1px solid var(--volt); display: inline-block;}
+/* İçerik Alanları */
+.content-section {display: none; background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 40px; box-shadow: 0 4px 12px rgba(0,0,0,0.03);}
+.content-section.active {display: block;}
+
+.warning-box{background:#fff5f5; border-left:4px solid #ff4d4d; padding:20px; margin:20px 0; font-size:14px; color:#852d2d}
+.success-box{background:#f0fff4; border-left:4px solid var(--teal); padding:20px; margin:20px 0; font-size:14px; color:#234e33}
+h2 {font-family: var(--syne); font-size: 24px; margin-bottom: 20px; color: var(--dark);}
+h3 {font-family: var(--syne); font-size: 17px; margin-top: 25px; color: var(--dark); border-bottom: 2px solid var(--volt); display: inline-block;}
 p, li {font-size: 14px; color: #444; margin-bottom: 12px;}
-.meta-info {font-size: 12px; color: #888; margin-bottom: 30px; text-align: center;}
-.icon {transition: transform 0.3s;}
-.active .icon {transform: rotate(180deg);}
+ul {padding-left: 20px;}
+.meta {font-size: 12px; color: #888; text-align: center; margin-bottom: 40px;}
 </style>
 </head>
 <body>
 
 <div class="container">
-    <div style="text-align: center; margin-bottom: 40px;">
-        <h1 style="font-family: var(--syne); margin-bottom: 10px;">Yasal Mevzuat ve Politikalar</h1>
-        <p class="meta-info">SMS Manager (Applicalgap) Kullanıcı Bilgilendirme Merkezi<br>Versiyon 1.1 - 2026</p>
+    <div style="text-align: center; margin-bottom: 30px;">
+        <h1 style="font-family: var(--syne); margin-bottom: 5px;">SMS Manager</h1>
+        <p class="meta">Yasal Bilgilendirme Merkezi (Legal Center) <br> Son Güncelleme: 2025</p>
     </div>
 
-    <div class="legal-section">
-        <div class="legal-header" onclick="toggleSection(this)">
-            <h2>1. Son Kullanıcı Lisans ve Kullanım Sözleşmesi (EULA)</h2>
-            <span class="icon">▼</span>
-        </div>
-        <div class="legal-content">
-            <p><strong>1. Taraflar:</strong> Geliştirici Erhan Güngör ("Uygulama Sahibi") ile uygulamayı indiren/kullanan gerçek kişi ("Kullanıcı") arasındadır.</p>
-            <p><strong>2. Lisans:</strong> Kullanıcıya ticari olmayan, kişisel kullanım için münhasır olmayan, devredilemez ve geri alınabilir bir lisans tanınmaktadır. 5846 Sayılı Fikir ve Sanat Eserleri Kanunu kapsamında tüm haklar saklıdır.</p>
-            <p><strong>3. Uygulamanın Amacı:</strong> Belirli gönderici isimlerine göre engelleme, tanımlanmış bir numaraya SMS yönlendirme ve yerel log tutma işlevlerini sunar.</p>
-            <p><strong>4. Kullanım Kısıtlamaları:</strong> Üçüncü kişilerin haberleşmesini gizlice izlemek, uygulamayı suç faaliyetlerinde kullanmak veya tersine mühendislik yapmak yasaktır.</p>
-            <p><strong>5. Sorumsuzluk Kaydı:</strong> Uygulama "olduğu gibi" sunulmaktadır. Geliştirici; kesintisiz çalışma veya belirli bir amaca uygunluk garantisi vermez. Google Play/App Store kaynaklı sorunlardan sorumlu tutulamaz.</p>
-            <p><strong>6. Fesih:</strong> Kullanıcı uygulamayı silerek sözleşmeyi feshedebilir. İhlal durumunda Uygulama Sahibi erişimi önceden bildirmeksizin sonlandırabilir.</p>
-        </div>
+    <div class="tabs">
+        <button class="tab-btn active" onclick="showTab('privacy')">Gizlilik Politikası</button>
+        <button class="tab-btn" onclick="showTab('eula')">Kullanıcı Sözleşmesi (EULA)</button>
+        <button class="tab-btn" onclick="showTab('kvkk')">Aydınlatma Metni</button>
+        <button class="tab-btn" onclick="showTab('consent')">Açık Rıza</button>
+        <button class="tab-btn" onclick="showTab('disclaimer')">Sorumluluk Reddi</button>
     </div>
 
-    <div class="legal-section">
-        <div class="legal-header" onclick="toggleSection(this)">
-            <h2>2. KVKK Aydınlatma Metni</h2>
-            <span class="icon">▼</span>
-        </div>
-        <div class="legal-content">
-            <p><strong>Veri Sorumlusu:</strong> Erhan Güngör | info@applicalgap.com</p>
-            <p><strong>1. İşlenen Veriler:</strong> Gönderici adı/numarası, SMS meta verisi (zaman damgası) ve yönlendirme hedef numarası. SMS içeriği sunuculara iletilmez.</p>
-            <p><strong>2. İşleme Amacı:</strong> Engelleme/yönlendirme kurallarının çalıştırılması ve teknik hataların düzeltilmesi.</p>
-            <p><strong>3. Hukuki Dayanak:</strong> KVKK Madde 5/2(c) - Sözleşmenin ifası ve Madde 5/2(f) - Meşru menfaat.</p>
-            <p><strong>4. Veri Aktarımı:</strong> Veriler sunucu taraflı saklanmaz. Sadece kullanıcı yönlendirme özelliğini açtığında, veriler operatör üzerinden kullanıcının kendi belirlediği numaraya aktarılır.</p>
-            <p><strong>5. Saklama Süresi:</strong> Kullanıcı kuralları silene veya uygulamayı kaldırana kadar cihazda kalır.</p>
-            <p><strong>6. Haklarınız (Madde 11):</strong> Verilerinizin işlenip işlenmediğini öğrenme, silinmesini veya düzeltilmesini talep etme hakkınız saklıdır.</p>
-            <div class="success-box"><strong>Sıfır Sunucu Politikası:</strong> Uygulama merkezi bir veritabanı kullanmaz; tüm kişisel verileriniz telefonunuzda şifrelenmiş olarak kalır.</div>
-        </div>
+    <div id="privacy" class="content-section active">
+        <h2>Gizlilik Politikası (Privacy Policy)</h2>
+        <p>SMS Manager uygulaması, Erhan Güngör tarafından geliştirilmiştir. Gizliliğinize büyük önem veriyoruz.</p>
+        <h3>1. Topladığımız Veriler</h3>
+        <p><strong>Cihazda Yerel İşlenenler:</strong> Gönderici adları, numaralar ve işlem logları. Bu veriler hiçbir şekilde sunucularımıza gönderilmez veya bulutta saklanmaz.</p>
+        <p><strong>Otomatik Toplananlar:</strong> Uygulama reklam SDK'sı veya izleme kütüphanesi içermez. Konum, kamera veya mikrofon erişimi talep edilmez.</p>
+        <h3>2. Üçüncü Taraf Hizmetleri</h3>
+        <p>Uygulama, Google Play veya Apple App Store üzerinden dağıtılır. Bu platformların kendi politikaları geçerlidir. Uygulama içi satın alma mevcutsa, ödeme bilgileri tarafımızca işlenmez.</p>
+        <div class="success-box">Verileriniz hiçbir üçüncü tarafa satılmaz veya ticari amaçla kullanılmaz.</div>
+        <h3>3. Çocukların Gizliliği</h3>
+        <p>Uygulama 13 yaş altı kişilere yönelik değildir. Bu yaş grubundan veri toplandığı fark edilirse derhal silinecektir.</p>
     </div>
 
-    <div class="legal-section">
-        <div class="legal-header" onclick="toggleSection(this)">
-            <h2>3. Açık Rıza Metni (Veri Aktarımı)</h2>
-            <span class="icon">▼</span>
-        </div>
-        <div class="legal-content">
-            <p>6698 Sayılı KVKK Madde 5/1 uyarınca;</p>
-            <p>SMS Yönlendirme özelliğini etkinleştirdiğimde; gelen SMS'lerin (gönderici ve içerik dahil) kendi tanımladığım hedef numaraya iletilmesine, bu iletişimin operatör şebekesi üzerinden gerçekleşmesine ve bu işlemin cihazımda loglanmasına <strong>özgür irademle onay veriyorum.</strong></p>
-            <p><em>Not: Rızanızı dilediğiniz zaman ayarlar bölümünden geri alabilirsiniz.</em></p>
-        </div>
+    <div id="eula" class="content-section">
+        <h2>Son Kullanıcı Lisans Sözleşmesi (EULA)</h2>
+        <p><strong>Taraflar:</strong> Erhan Güngör ("Uygulama Sahibi") ve Kullanıcı.</p>
+        <p><strong>Lisans:</strong> Ticari olmayan, kişisel kullanım için sınırlı ve geri alınabilir lisans hakkı tanınır. 5846 sayılı FSEK kapsamında korunmaktadır.</p>
+        <p><strong>Kısıtlamalar:</strong> Tersine mühendislik yapmak, başkasının haberleşmesini izinsiz takip etmek yasaktır.</p>
+        <p><strong>Fesih:</strong> Kullanıcı uygulamayı silerek her zaman sözleşmeyi feshedebilir.</p>
     </div>
 
-    <div class="legal-section">
-        <div class="legal-header" onclick="toggleSection(this)">
-            <h2>4. Sorumluluk Reddi ve Yasal Uyarı</h2>
-            <span class="icon">▼</span>
-        </div>
-        <div class="legal-content">
-            <div class="warning-box">
-                <strong>TCK UYARISI:</strong> Türk Ceza Kanunu Madde 132-134 uyarınca; kişiler arasındaki haberleşmenin gizliliğini ihlal etmek 2 yıldan 5 yıla kadar hapis cezası gerektirir. Uygulamanın başkasına ait cihazlara gizlice kurulmasından doğacak tüm cezai sorumluluk kullanıcıya aittir.
-            </div>
-            <h3>Sorumsuzluk Maddeleri:</h3>
-            <ul>
-                <li><strong>Operatör Maliyetleri:</strong> Yönlendirme işlemi SMS tarifeniz üzerinden ücretlendirilir. Geliştirici maddi kayıplardan sorumlu değildir.</li>
-                <li><strong>Hatalı Yönlendirme:</strong> Kullanıcının hedef numarayı yanlış girmesi sonucu oluşacak veri sızıntılarından kullanıcı sorumludur.</li>
-                <li><strong>Yetkili Makamlar:</strong> Adli makamlardan gelen usulüne uygun taleplerde Geliştirici tam işbirliği yapacaktır.</li>
-            </ul>
-            <p><strong>Yetkili Mahkeme:</strong> İstanbul (Çağlayan) Mahkemeleri ve İcra Daireleri.</p>
-        </div>
+    <div id="kvkk" class="content-section">
+        <h2>KVKK Aydınlatma Metni</h2>
+        <p><strong>Veri Sorumlusu:</strong> Erhan Güngör | info@applicalgap.com</p>
+        <h3>Veri İşleme Amaçları</h3>
+        <ul>
+            <li>SMS engelleme ve yönlendirme kurallarının uygulanması.</li>
+            <li>İşlemlerin cihaz üzerinde loglanması ve teknik hataların düzeltilmesi.</li>
+        </ul>
+        <h3>Veri Saklama</h3>
+        <p>Veriler kullanıcı uygulamayı kaldırana kadar cihazda kalır. Sunucu tarafında hiçbir veri saklanmamaktadır.</p>
+        <h3>Haklarınız (Madde 11)</h3>
+        <p>Verilerinizin işlenip işlenmediğini öğrenme ve silme hakkına sahipsiniz. Başvurular 30 gün içinde yanıtlanır.</p>
     </div>
 
+    <div id="consent" class="content-section">
+        <h2>Açık Rıza Metni</h2>
+        <p>SMS Yönlendirme özelliği, kişisel iletişim verilerinin (SMS içeriği dahil) kullanıcı tarafından belirlenen üçüncü bir tarafa (hedef numara) aktarılmasını içerir.</p>
+        <div class="success-box">
+            <strong>Beyan:</strong> "Yönlendirme kurallarını aktif ederek, mesajlarımın belirlediğim hedef numaraya iletilmesine ve bu işlemin cihazımda loglanmasına özgür irademle ONAY VERİYORUM."
+        </div>
+        <p>Rızanızı dilediğiniz zaman ayarlar bölümünden geri alabilirsiniz.</p>
+    </div>
+
+    <div id="disclaimer" class="content-section">
+        <h2>Sorumluluk Reddi ve Yasal Uyarı</h2>
+        <div class="warning-box">
+            <strong>YASAL UYARI:</strong> TCK Madde 132-134 uyarınca; haberleşmenin gizliliğini ihlal etmek hapis cezası gerektiren bir suçtur. Uygulamanın üçüncü kişilerin rızası dışında kullanılması durumunda tüm sorumluluk kullanıcıya aittir.
+        </div>
+        <h3>Geliştirici Sorumsuzluğu</h3>
+        <ul>
+            <li>Hatalı yönlendirme numarası girişi sonucu oluşacak veri sızıntıları.</li>
+            <li>Operatör tarifeniz üzerinden yansıyacak SMS gönderim maliyetleri.</li>
+            <li>Uygulamanın hukuka aykırı biçimde kötüye kullanımı.</li>
+        </ul>
+        <p>Uyuşmazlıklarda İstanbul Mahkemeleri ve İcra Daireleri yetkilidir.</p>
+    </div>
+
+    <div style="margin-top: 50px; text-align: center;">
+        <a href="mailto:info@applicalgap.com" style="color: var(--teal); font-weight: bold; text-decoration: none;">info@applicalgap.com</a>
+    </div>
 </div>
 
 <script>
-function toggleSection(header) {
-    const section = header.parentElement;
-    const isActive = section.classList.contains('active');
-    document.querySelectorAll('.legal-section').forEach(s => s.classList.remove('active'));
-    if (!isActive) { section.classList.add('active'); }
+function showTab(tabId) {
+    document.querySelectorAll('.content-section').forEach(section => section.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    
+    document.getElementById(tabId).classList.add('active');
+    event.currentTarget.classList.add('active');
 }
 </script>
 
