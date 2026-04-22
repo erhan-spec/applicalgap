@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>SMS Manager — Privacy Policy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--ink:#0d0d0d;--bg:#f0ede8;--volt:#c6ff00;--orange:#ff5c00;--teal:#00e5b0;--border:#dedad4;--dark:#080e1c;--card:#e8e4de;--syne:'Syne',system-ui,sans-serif;--sans:'DM Sans',system-ui,sans-serif}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7;margin:0}
+
+.logobar{background:var(--dark);padding:16px 7%;display:flex;align-items:center;justify-content:space-between}
+.wordmark{font-family:var(--syne);font-weight:700;font-size:18px;font-style:italic;letter-spacing:-0.5px;text-decoration:none}
+.wm-a{color:#fff}.wm-al{color:var(--volt)}.wm-gap{color:#fff}
+.back{font-size:13px;color:#6b7a99;text-decoration:none;display:flex;align-items:center;gap:6px}
+.back:hover{color:var(--teal)}
+
+.lang-switch {display: flex; gap: 10px; margin-top: 15px;}
+.lang-btn {background: transparent; border: 1px solid #3d5068; color: #fff; padding: 4px 12px; border-radius: 4px; cursor: pointer; font-size: 12px; transition: 0.2s;}
+.lang-btn.active {background: var(--teal); border-color: var(--teal); color: var(--dark); font-weight: bold;}
+
+.hero{background:var(--dark);padding:48px 7% 40px}
+.app-badge{display:inline-flex;align-items:center;gap:8px;background:#0d1628;border:1px solid #1a2235;border-radius:100px;padding:5px 16px;font-size:12px;color:var(--teal);letter-spacing:0.5px;margin-bottom:18px}
+.hero h1{font-family:var(--syne);font-size:clamp(28px,4vw,44px);font-weight:700;letter-spacing:-1px;color:#fff;margin-bottom:10px}
+.hero-meta{font-size:13px;color:#4a5568}
+.hero-meta span{color:#6b7a99}
+
+.content{max-width:720px;margin:0 auto;padding:52px 7%}
+.lang-content {display: none;}
+.lang-content.active {display: block;}
+
+.section{margin-bottom:40px}
+.section h2{font-family:var(--syne);font-size:18px;font-weight:700;color:var(--ink);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.section p{font-size:14px;color:#555;margin-bottom:12px;line-height:1.7}
+.section p:last-child{margin-bottom:0}
+
+.perm-list{list-style:none;padding:0;display:flex;flex-direction:column;gap:10px;margin-top:4px}
+.perm-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 16px}
+.perm-name{font-size:13px;font-weight:700;color:var(--ink);font-family:var(--syne);margin-bottom:4px}
+.perm-desc{font-size:13px;color:#666;line-height:1.55}
+
+.highlight-box{background:var(--dark);border-radius:12px;padding:22px 24px;margin:16px 0}
+.highlight-box p{color:#9aaac4;font-size:14px;line-height:1.65;margin:0}
+.highlight-box strong{color:var(--teal)}
+
+footer{background:var(--dark);padding:24px 7%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-top:0}
+.fl{font-family:var(--syne);font-size:14px;font-weight:700;font-style:italic;color:#fff}
+.fl em{font-style:italic;color:var(--volt)}
+.fc{font-size:12px;color:#3d5068}
+</style>
+</head>
+<body>
+
+<div class="logobar">
+  <a class="wordmark" href="/"><span class="wm-a">applic</span><span class="wm-al">al</span><span class="wm-gap">gap</span></a>
+  <a class="back" href="/">&#8592; Back to applicalgap.com</a>
+</div>
+
+<div class="hero">
+  <div class="app-badge">● SMS Manager</div>
+  <h1 id="hero-title">Privacy Policy</h1>
+  <p class="hero-meta"><span id="last-updated-text">Last updated</span>: <span>2025</span> &nbsp;·&nbsp; Developer: <span>Erhan Güngör</span> &nbsp;·&nbsp; <a href="mailto:info@applicalgap.com" style="color:var(--teal);text-decoration:none">info@applicalgap.com</a></p>
+  
+  <div class="lang-switch">
+    <button class="lang-btn active" onclick="setLanguage('en')">English</button>
+    <button class="lang-btn" onclick="setLanguage('tr')">Türkçe</button>
+  </div>
+</div>
+
+<div class="content">
+
+  <div id="content-en" class="lang-content active">
+    <div class="section">
+      <h2>1. Introduction</h2>
+      <p>SMS Manager is a personal SMS management tool developed by Erhan Güngör. We take your privacy seriously. This policy transparently explains what data the application processes and how.</p>
+      <div class="highlight-box">
+        <p><strong>Short version:</strong> SMS Manager processes your data locally on your device only. Nothing is sent to our servers, stored in the cloud, or shared with third parties.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>2. Data We Process</h2>
+      <p><strong>Processed locally on your device:</strong></p>
+      <p>The application accesses and processes the following data locally on your device only:</p>
+      <ul style="list-style:disc;padding-left:20px;color:#555;font-size:14px;display:flex;flex-direction:column;gap:6px;margin-top:8px">
+        <li>SMS sender names and numbers (for blocking/forwarding rules)</li>
+        <li>User-created blocking and forwarding rules</li>
+        <li>Processing logs (which messages were blocked or forwarded)</li>
+      </ul>
+      <p style="margin-top:14px">This data is never transmitted to our servers, stored in the cloud, or shared with any third party.</p>
+      <p style="margin-top:14px"><strong>Automatically collected data:</strong></p>
+      <p>The application contains no analytics SDK, advertising SDK, or third-party tracking library. No device ID, location, camera, or microphone access is requested.</p>
+    </div>
+
+    <div class="section">
+      <h2>3. Permissions</h2>
+      <p>The following device permissions are used solely to provide the app’s core functionality:</p>
+      <ul class="perm-list">
+        <li class="perm-item">
+          <div class="perm-name">READ_SMS / RECEIVE_SMS</div>
+          <div class="perm-desc">To read incoming messages and process them according to your rules. Used only for blocking and forwarding decisions.</div>
+        </li>
+        <li class="perm-item">
+          <div class="perm-name">SEND_SMS</div>
+          <div class="perm-desc">For the SMS forwarding feature. Only used when you explicitly enable forwarding in the app settings.</div>
+        </li>
+        <li class="perm-item">
+          <div class="perm-name">READ_CONTACTS</div>
+          <div class="perm-desc">To allow you to create blocking rules based on sender names from your contacts. Contact data is never stored or transmitted.</div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>4. Data Security</h2>
+      <p>Your data is stored in your device’s secure storage area. The application uses the built-in security mechanisms provided by the Android/iOS platform to prevent unauthorised access.</p>
+      <p>Since no server-side data processing occurs, there is no risk of a server breach affecting your data.</p>
+    </div>
+
+    <div class="section">
+      <h2>5. Children’s Privacy</h2>
+      <p>This application is not directed at persons under the age of 13, and we do not knowingly collect personal data from children under 13.</p>
+    </div>
+
+    <div class="section">
+      <h2>6. Third-Party Services</h2>
+      <p>The application is distributed via the Google Play Store and/or Apple App Store. These platforms have their own privacy policies which are outside the control of the app developer.</p>
+    </div>
+
+    <div class="section">
+      <h2>7. Your Rights</h2>
+      <p>You have the right to request information about any data processed by this application, to request correction or deletion of that data, and to withdraw consent at any time by uninstalling the application.</p>
+    </div>
+  </div>
+
+  <div id="content-tr" class="lang-content">
+    <div class="section">
+      <h2>1. Giriş</h2>
+      <p>SMS Manager uygulaması, Erhan Güngör tarafından geliştirilmiş bir kişisel SMS yönetim aracıdır. Gizliliğinize büyük önem veriyoruz. Bu politika, uygulamanın hangi verileri nasıl işlediğini şeffaf biçimde açıklar[cite: 7, 8].</p>
+      <div class="highlight-box">
+        <p><strong>Kısa özet:</strong> SMS Manager verilerinizi yalnızca cihazınızda yerel olarak işler. Hiçbir veri sunucularımıza gönderilmez, bulutta saklanmaz veya üçüncü taraflarla paylaşılmaz[cite: 15].</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>2. Topladığımız Veriler</h2>
+      <p><strong>Cihazınızda Yerel Olarak İşlenen Veriler:</strong></p>
+      <p>Uygulama aşağıdaki verilere cihazınızda yerel olarak erişir ve işler[cite: 11]:</p>
+      <ul style="list-style:disc;padding-left:20px;color:#555;font-size:14px;display:flex;flex-direction:column;gap:6px;margin-top:8px">
+        <li>SMS gönderici adları ve numaraları (engelleme/yönlendirme kuralları için) [cite: 12]</li>
+        <li>Kullanıcı tarafından oluşturulan engelleme ve yönlendirme kuralları [cite: 13]</li>
+        <li>İşlem logları (hangi mesajların engellendiği veya yönlendirildiği) [cite: 14]</li>
+      </ul>
+      <p style="margin-top:14px"><strong>Otomatik Toplanan Veriler:</strong></p>
+      <p>Uygulama herhangi bir analitik SDK, reklam SDK'sı veya üçüncü taraf izleme kütüphanesi içermemektedir[cite: 17]. Cihaz kimliği, konum, kamera veya mikrofon erişimi talep edilmemektedir[cite: 18].</p>
+    </div>
+
+    <div class="section">
+      <h2>3. İzinler</h2>
+      <p>Uygulamanın işlevselliği için aşağıdaki cihaz izinleri kullanılmaktadır[cite: 20]:</p>
+      <ul class="perm-list">
+        <li class="perm-item">
+          <div class="perm-name">READ_SMS / RECEIVE_SMS</div>
+          <div class="perm-desc">Gelen mesajları okumak ve kurallara göre işlem yapmak için[cite: 21].</div>
+        </li>
+        <li class="perm-item">
+          <div class="perm-name">SEND_SMS</div>
+          <div class="perm-desc">SMS yönlendirme özelliği için (yalnızca kullanıcı aktif ettiğinde)[cite: 22].</div>
+        </li>
+        <li class="perm-item">
+          <div class="perm-name">READ_CONTACTS</div>
+          <div class="perm-desc">Gönderici isimlerine göre engelleme kuralı oluşturmak için[cite: 23].</div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>4. Veri Güvenliği</h2>
+      <p>Verileriniz cihazınızın güvenli depolama alanında saklanmaktadır. Uygulama, yetkisiz erişimi önlemek için Android/iOS platformunun sunduğu yerleşik güvenlik mekanizmalarından yararlanmaktadır[cite: 26]. Sunucu taraflı veri işleme gerçekleştirilmediğinden olası bir sunucu ihlali riski bulunmamaktadır[cite: 27].</p>
+    </div>
+
+    <div class="section">
+      <h2>5. Çocukların Gizliliği</h2>
+      <p>Uygulama 13 yaşın altındaki kişilere yönelik değildir ve bu kişilerden bilerek kişisel veri toplanmamaktadır[cite: 29].</p>
+    </div>
+
+    <div class="section">
+      <h2>6. Üçüncü Taraf Hizmetleri</h2>
+      <p>Uygulama, Google Play Store veya Apple App Store aracılığıyla dağıtılmaktadır[cite: 32]. Bu platformların kendi gizlilik politikaları geçerlidir[cite: 33].</p>
+    </div>
+
+    <div class="section">
+      <h2>7. Kullanıcı Hakları</h2>
+      <p>KVKK kapsamındaki haklarınız için Aydınlatma Metni'mizi inceleyiniz. Tüm talepler info@applicalgap.com adresine yönlendirilebilir ve 30 gün içinde yanıtlanır[cite: 36].</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="fl">applic<em>al</em>gap</div>
+  <div class="fc">© 2025 Applicalgap. All rights reserved.</div>
+</footer>
+
+<script>
+function setLanguage(lang) {
+  // Update content visibility
+  document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+  document.getElementById('content-' + lang).classList.add('active');
+
+  // Update button styles
+  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+
+  // Update Hero Titles
+  const titles = { 'en': 'Privacy Policy', 'tr': 'Gizlilik Politikası' };
+  const lastUpdated = { 'en': 'Last updated', 'tr': 'Son Güncelleme' };
+  
+  document.getElementById('hero-title').innerText = titles[lang];
+  document.getElementById('last-updated-text').innerText = lastUpdated[lang];
+}
+</script>
+
+</body>
+</html>
