@@ -9,18 +9,27 @@
 :root{--ink:#0d0d0d;--bg:#f0ede8;--volt:#c6ff00;--teal:#00e5b0;--border:#dedad4;--dark:#080e1c;--sans:'DM Sans',sans-serif;--syne:'Syne',sans-serif}
 body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.6;margin:0}
 .container{max-width:1100px;margin:0 auto;padding:40px 5%}
+
+/* UI Controls */
 .controls-bar {display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; flex-wrap: wrap; gap: 15px;}
 .lang-switcher {display: flex; gap: 8px;}
 .btn {background: #fff; border: 1px solid var(--border); padding: 8px 16px; border-radius: 8px; cursor: pointer; font-family: var(--syne); font-size: 12px; transition: 0.2s;}
 .btn.active {background: var(--dark); color: #fff; border-color: var(--dark);}
+
 .tabs {display: flex; flex-wrap: wrap; gap: 8px; border-bottom: 1px solid var(--border); padding-bottom: 15px; margin-bottom: 30px;}
+
+/* Content Display */
 .content-section {display: none; background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 45px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);}
 .content-section.active {display: block;}
+
+/* Legal Styling */
 .shield-box {background: #f0f7ff; border-left: 5px solid #0070f3; padding: 25px; margin: 25px 0; border-radius: 4px;}
 .warning-box {background: #fff5f5; border-left: 5px solid #ff4d4d; padding: 25px; margin: 25px 0; border-radius: 4px;}
 h2 {font-family: var(--syne); font-size: 28px; margin-bottom: 25px; letter-spacing: -0.5px;}
-h3 {font-family: var(--syne); font-size: 18px; margin-top: 35px; border-bottom: 2px solid var(--volt); display: inline-block;}
+h3 {font-family: var(--syne); font-size: 18px; margin-top: 35px; border-bottom: 2px solid var(--volt); display: inline-block; padding-bottom: 2px;}
 p, li {font-size: 15px; color: #333; margin-bottom: 15px;}
+strong {color: var(--dark);}
+
 [data-lang="tr"] .en-only, [data-lang="en"] .tr-only {display: none;}
 </style>
 </head>
@@ -47,102 +56,108 @@ p, li {font-size: 15px; color: #333; margin-bottom: 15px;}
         <div class="en-only">
             <h2>Privacy Policy</h2>
             <p><strong>Last Updated: April 2026</strong> | Erhan Güngör | info@applicalgap.com</p>
-            <h3>1. Data Collection and Usage</h3>
-            <p>To provide synchronization and service continuity, the following data is stored in our server-side PostgreSQL database and linked to your account: Blocked sender names, contact names and phone numbers, and forwarding rules. This data is stored solely to operate the service.</p>
+            <h3>1. Data Collection and Infrastructure</h3>
+            <p>To provide synchronization and account-based management, the following configuration data is stored in our secure server-side PostgreSQL database: Blocked sender names, manually created contact names and phone numbers, and user-defined forwarding rules. This data is linked to your account via <strong>Clerk</strong>.</p>
             <div class="shield-box">
-                <strong>SMS Content Ground Truth:</strong> SMS message body and content are NEVER transmitted to or stored on any server. All processing for filtering and forwarding occurs locally on your device.
+                <strong>SMS Content Privacy:</strong> The actual body and content of your SMS messages are NEVER transmitted to or stored on our servers. All filtering and forwarding logic is executed strictly on your local device.
             </div>
-            <h3>2. Account and Authentication</h3>
-            <p>We use <strong>Clerk (clerk.com)</strong> for authentication. Your sign-in credentials (email/phone) are processed by Clerk. Review their policy at clerk.com/privacy.</p>
-            <h3>3. Third-Party Services</h3>
-            <ul>
-                <li><strong>RevenueCat:</strong> Handles purchase management and entitlement checks.</li>
-                <li><strong>Apple/Google:</strong> Handle all financial transactions directly. No payment card details are shared with the developer.</li>
-            </ul>
+            <h3>2. Authentication & Third Parties</h3>
+            <p>Account authentication is managed by <strong>Clerk</strong>. Your sign-in credentials (email/phone) are governed by Clerk’s Privacy Policy (clerk.com/privacy). Subscription entitlements are managed by <strong>RevenueCat</strong>, while all financial transactions are handled exclusively by Apple or Google.</p>
+            <h3>3. Data Retention & Security</h3>
+            <p>We maintain server-side data using encrypted connections (SSL/TLS) and strict access controls. Data is retained as long as your account is active. You may request permanent deletion of your account and associated data by contacting <strong>info@applicalgap.com</strong>.</p>
         </div>
         <div class="tr-only">
             <h2>Gizlilik Politikası</h2>
             <p><strong>Son Güncelleme: Nisan 2026</strong> | Erhan Güngör | info@applicalgap.com</p>
-            <h3>1. Veri Toplama ve Kullanımı</h3>
-            <p>Senkronizasyon ve hizmet sürekliliği için; engellenen gönderici adları, kişi adları ve telefon numaraları ile yönlendirme kuralları sunucu tarafındaki PostgreSQL veritabanımızda saklanır. Bu veriler sadece hizmetin işletilmesi amacıyla tutulur.</p>
+            <h3>1. Veri Toplama ve Altyapı</h3>
+            <p>Senkronizasyon ve hesap yönetimi sağlamak amacıyla; engellenen gönderici adları, manuel oluşturulan kişi adları ve telefon numaraları ile yönlendirme kuralları sunucu tarafındaki PostgreSQL veritabanımızda saklanır. Bu veriler <strong>Clerk</strong> aracılığıyla hesabınızla ilişkilendirilir.</p>
             <div class="shield-box">
-                <strong>SMS İçeriği Gerçeği:</strong> SMS mesaj gövdesi ve içeriği ASLA sunucularımıza iletilmez veya saklanmaz. Filtreleme ve yönlendirme işlemleri tamamen cihazınızda gerçekleşir.
+                <strong>SMS İçerik Gizliliği:</strong> SMS mesaj gövdesi ve içeriği ASLA sunucularımıza iletilmez veya saklanmaz. Filtreleme ve yönlendirme işlemleri tamamen yerel cihazınızda gerçekleşir.
             </div>
-            <h3>2. Hesap ve Kimlik Doğrulama</h3>
-            <p>Kimlik doğrulama için <strong>Clerk (clerk.com)</strong> kullanılmaktadır. Giriş bilgileriniz Clerk tarafından işlenir: clerk.com/privacy.</p>
-            <h3>3. Üçüncü Taraf Hizmetleri</h3>
-            <ul>
-                <li><strong>RevenueCat:</strong> Satın alma yönetimi ve yetki kontrollerini gerçekleştirir.</li>
-                <li><strong>Apple/Google:</strong> Tüm ödeme işlemlerini doğrudan yönetir. Kart bilgileriniz geliştirici ile paylaşılmaz.</li>
-            </ul>
+            <h3>2. Kimlik Doğrulama ve Üçüncü Taraflar</h3>
+            <p>Hesap doğrulama <strong>Clerk</strong> tarafından yönetilir. Abonelik yetkileri <strong>RevenueCat</strong>, ödeme işlemleri ise Apple veya Google tarafından yürütülür. Geliştirici kart bilgilerinize erişemez.</p>
+            <h3>3. Veri Güvenliği ve Silme</h3>
+            <p>Verileriniz SSL/TLS şifreleme ile sunucu tarafında korunur. Verilerinizin silinmesini <strong>info@applicalgap.com</strong> adresinden talep edebilirsiniz.</p>
         </div>
     </div>
 
     <div id="eula" class="content-section">
         <div class="en-only">
             <h2>End User License Agreement (EULA)</h2>
+            <h3>Article 1: License Grant</h3>
+            <p>We grant you a personal, non-exclusive, non-transferable license to use SMS Manager for non-commercial purposes. All intellectual property rights belong to Erhan Güngör / applicalgap.</p>
+            <h3>Article 2: Subscription & Auto-Renewal</h3>
+            <p>Monthly and Annual plans are auto-renewing subscriptions charged to your platform account. Subscriptions renew unless cancelled at least 24 hours before the end of the billing cycle. Management is via platform settings.</p>
+            <h3>Article 3: Prohibited Use (Banking & Sensitive Data)</h3>
             <div class="warning-box">
-                <strong>BANKING & SENSITIVE DATA SHIELD:</strong> Users are strictly prohibited from using the forwarding feature for Banking OTPs, 2FA codes, or confidential corporate data. The developer accepts ZERO liability for financial loss or account breaches.
+                <strong>FINANCIAL SHIELD:</strong> You are strictly prohibited from using the forwarding feature for Banking OTPs, 2FA codes, or confidential corporate data. The developer is not liable for financial loss resulting from the forwarding of sensitive data.
             </div>
-            <h3>1. Responsibilities</h3>
-            <p>The user is solely responsible for ensuring that forwarding SMS to a third party does not violate local privacy laws or the rights of the sender. You agree to indemnify the developer against all legal fees arising from misuse.</p>
-            <h3>2. Subscription Terms</h3>
-            <p>Monthly/Annual plans are auto-renewing. Charges are handled by the App Store/Google Play. Subscriptions renew unless cancelled 24h before the period ends.</p>
+            <h3>Article 4: Indemnification</h3>
+            <p>You agree to indemnify and hold Erhan Güngör harmless from any legal claims, damages, or fees arising from your misuse of the app, including unauthorized monitoring of third-party communications.</p>
+            <h3>Article 5: Termination</h3>
+            <p>We reserve the right to terminate your access without notice if these terms are violated. You may terminate by deleting your account and uninstalling the app.</p>
         </div>
         <div class="tr-only">
             <h2>Son Kullanıcı Lisans Sözleşmesi (EULA)</h2>
+            <h3>Madde 1: Lisans Kapsamı</h3>
+            <p>Ticari olmayan kişisel kullanımınız için sınırlı bir lisans tanınmaktadır. Tüm fikri mülkiyet hakları Erhan Güngör / applicalgap'a aittir.</p>
+            <h3>Madde 2: Abonelik ve Yenileme</h3>
+            <p>Abonelikler otomatik yenilenir. Ödemeler platform hesabınızdan tahsil edilir. İptal işlemleri platform ayarlarından yapılmalıdır.</p>
+            <h3>Madde 3: Yasaklı Kullanım (Banka ve Hassas Veri)</h3>
             <div class="warning-box">
-                <strong>BANKACILIK VE HASSAS VERİ KALKANI:</strong> Yönlendirme özelliğinin Banka OTP kodları, 2FA şifreleri veya gizli ticari veriler için kullanılması kesinlikle yasaktır. Geliştirici maddi kayıplardan sorumlu tutulamaz.
+                <strong>FİNANSAL KALKAN:</strong> Yönlendirme özelliğinin Banka OTP kodları veya 2FA şifreleri için kullanılması yasaktır. Bu verilerin iletilmesinden doğacak maddi kayıplardan Geliştirici sorumlu tutulamaz.
             </div>
-            <h3>1. Sorumluluklar</h3>
-            <p>SMS'lerin üçüncü bir tarafa yönlendirilmesinin yerel yasaları ihlal etmediğinden emin olmak kullanıcının sorumluluğundadır. Kötüye kullanım durumunda geliştiricinin tüm yasal masraflarını karşılamayı kabul edersiniz.</p>
-            <h3>2. Abonelik Şartları</h3>
-            <p>Abonelikler otomatik yenilenir. Ödemeler App Store/Google Play üzerinden alınır. Dönem bitiminden 24 saat önce iptal edilmelidir.</p>
+            <h3>Madde 4: Tazminat ve Sorumluluk</h3>
+            <p>Uygulamanın rızasız izleme veya kötüye kullanımı durumunda geliştiricinin uğrayacağı tüm zararları ve yasal masrafları tazmin etmeyi kabul edersiniz.</p>
+            <h3>Madde 5: Fesih</h3>
+            <p>Sözleşme ihlali durumunda erişiminiz önceden bildirim yapılmaksızın sonlandırılabilir.</p>
         </div>
     </div>
 
     <div id="kvkk" class="content-section">
         <div class="en-only">
-            <h2>Disclosure & Data Rights</h2>
-            <h3>1. Data Retention</h3>
-            <p>Account data is kept for the duration of your active subscription. You may request permanent deletion of your data at any time by emailing <strong>info@applicalgap.com</strong>.</p>
-            <h3>2. Security</h3>
-            <p>Our servers utilize SSL/TLS encryption for data in transit and strict access controls for data at rest.</p>
+            <h2>Personal Data Disclosure</h2>
+            <p><strong>Data Controller:</strong> Erhan Güngör.</p>
+            <h3>1. Legal Basis</h3>
+            <p>Processing is based on Contractual Necessity (Art 6.1.b GDPR) to operate the service. We do not access your device's native contact book; all contacts are user-provided.</p>
+            <h3>2. Data Subject Rights</h3>
+            <p>Under GDPR and KVKK, you have the right to access, rectify, and erase your account data. Email <strong>info@applicalgap.com</strong> for all requests.</p>
         </div>
         <div class="tr-only">
             <h2>Aydınlatma Metni</h2>
-            <h3>1. Veri Saklama</h3>
-            <p>Hesap verileri aboneliğiniz süresince saklanır. Verilerinizin kalıcı olarak silinmesini <strong>info@applicalgap.com</strong> adresine e-posta göndererek talep edebilirsiniz.</p>
-            <h3>2. Güvenlik</h3>
-            <p>Sunucularımızda SSL/TLS şifreleme ve sıkı erişim kontrolleri uygulanmaktadır.</p>
+            <p><strong>Veri Sorumlusu:</strong> Erhan Güngör.</p>
+            <h3>1. Hukuki Dayanak</h3>
+            <p>Verileriniz KVKK Madde 5 uyarınca sözleşmenin ifası için işlenir. Uygulama telefonunuzdaki yerel rehbere erişmez; kişiler kullanıcı tarafından eklenir.</p>
+            <h3>2. Haklarınız</h3>
+            <p>Verilerinize erişme ve silinmesini talep etme hakkınız saklıdır. Taleplerinizi <strong>info@applicalgap.com</strong> adresine iletebilirsiniz.</p>
         </div>
     </div>
 
     <div id="consent" class="content-section">
         <div class="en-only">
             <h2>Explicit Consent</h2>
-            <p>By enabling forwarding, you provide explicit consent for the app to handle SMS metadata to execute your rules. You acknowledge that message contents are handled locally only.</p>
+            <p>By configuring forwarding rules, you provide explicit consent for the application to handle SMS metadata to execute your instructions. You acknowledge that message content processing is local and never reaches our servers.</p>
         </div>
         <div class="tr-only">
             <h2>Açık Rıza Metni</h2>
-            <p>Yönlendirme özelliğini aktif ederek, SMS meta verilerinin kurallarınızı işletmek üzere işlenmesine onay verirsiniz. Mesaj içeriğinin sadece yerel olarak işlendiğini kabul edersiniz.</p>
+            <p>Yönlendirme kurallarını aktif ederek, SMS meta verilerinin kurallarınızı işletmek üzere işlenmesine onay verirsiniz. Mesaj içeriğinin sadece yerel olarak işlendiğini kabul edersiniz.</p>
         </div>
     </div>
 
     <div id="disclaimer" class="content-section">
         <div class="en-only">
-            <h2>Disclaimer</h2>
+            <h2>Disclaimer of Liability</h2>
             <div class="warning-box">
-                <strong>TCK 132-134 Warning:</strong> Monitoring third-party communications without consent is a crime. All legal liability for misuse belongs strictly to the user.
+                <strong>Legal Warning:</strong> Intercepting third-party communication without consent is a crime (e.g., TCK 132, US Wiretap Act). All criminal and civil liability for misuse lies strictly with the user.
             </div>
-            <p>The app is provided 'AS IS'. We are not responsible for carrier charges or network failures.</p>
+            <p>The app is provided "AS IS". We are not responsible for carrier charges or delivery failures caused by network issues.</p>
         </div>
         <div class="tr-only">
-            <h2>Sorumluluk Reddi</h2>
+            <h2>Sorumluluk Reddi ve Yasal Uyarı</h2>
             <div class="warning-box">
-                <strong>TCK 132-134 Uyarısı:</strong> Üçüncü şahısların haberleşmesini rızasız izlemek suçtur. Tüm yasal sorumluluk kullanıcıya aittir.
+                <strong>Yasal Uyarı:</strong> Haberleşmenin gizliliğini ihlal etmek (TCK 132-134) suçtur. Kötüye kullanımdan doğacak tüm cezai ve hukuki sorumluluk kullanıcıya aittir.
             </div>
-            <p>Uygulama 'olduğu gibi' sunulmaktadır. Operatör ücretlerinden veya şebeke hatalarından geliştirici sorumlu değildir.</p>
+            <p>Uygulama olduğu gibi sunulmaktadır. Operatör ücretlerinden veya şebeke kaynaklı iletim hatalarından geliştirici sorumlu değildir.</p>
         </div>
     </div>
 </div>
