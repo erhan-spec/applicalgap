@@ -1,103 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Legal Center — SMS Manager</title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Legal & Privacy Center — SMS Manager</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{--ink:#0d0d0d;--bg:#f0ede8;--volt:#c6ff00;--teal:#00e5b0;--border:#dedad4;--dark:#080e1c;--sans:'DM Sans',sans-serif;--syne:'Syne',sans-serif}
 body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.6;margin:0}
 .container{max-width:1100px;margin:0 auto;padding:40px 5%}
-.lang-bar {display: flex; justify-content: flex-end; gap: 10px; margin-bottom: 20px;}
-.lang-btn {background: #fff; border: 1px solid var(--border); padding: 6px 15px; border-radius: 20px; cursor: pointer; font-size: 12px; font-weight: bold;}
-.lang-btn.active {background: var(--dark); color: #fff;}
-.tabs {display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 30px; border-bottom: 1px solid var(--border); padding-bottom: 20px;}
-.tab-btn {background: #fff; border: 1px solid var(--border); padding: 10px 20px; border-radius: 8px; cursor: pointer; font-family: var(--syne); font-size: 13px;}
-.tab-btn.active {background: var(--dark); color: #fff;}
-.content-section {display: none; background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 40px; box-shadow: 0 4px 12px rgba(0,0,0,0.03);}
+
+/* UI Controls */
+.controls-bar {display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; flex-wrap: wrap; gap: 15px;}
+.lang-switcher {display: flex; gap: 8px;}
+.btn {background: #fff; border: 1px solid var(--border); padding: 8px 16px; border-radius: 8px; cursor: pointer; font-family: var(--syne); font-size: 12px; transition: 0.2s;}
+.btn.active {background: var(--dark); color: #fff; border-color: var(--dark);}
+
+.tabs {display: flex; flex-wrap: wrap; gap: 8px; border-bottom: 1px solid var(--border); padding-bottom: 15px; margin-bottom: 30px;}
+
+/* Content Display */
+.content-section {display: none; background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 45px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);}
 .content-section.active {display: block;}
-.warning-box{background:#fff5f5; border-left:4px solid #ff4d4d; padding:20px; margin:20px 0; font-size:14px; color:#852d2d}
-.bank-shield{background:#f0f7ff; border-left:4px solid #0070f3; padding:20px; margin:20px 0; font-size:14px; color:#004085}
-h2 {font-family: var(--syne); font-size: 26px; margin-bottom: 20px; color: var(--dark);}
-h3 {font-family: var(--syne); font-size: 18px; margin-top: 30px; color: var(--dark); border-bottom: 2px solid var(--volt); display: inline-block;}
-p, li {font-size: 14px; color: #444; margin-bottom: 12px;}
-[data-lang="tr"] .lang-en, [data-lang="en"] .lang-tr {display: none;}
+
+/* Legal Styling */
+.shield-box {background: #f0f7ff; border-left: 5px solid #0070f3; padding: 25px; margin: 25px 0; border-radius: 4px;}
+.warning-box {background: #fff5f5; border-left: 5px solid #ff4d4d; padding: 25px; margin: 25px 0; border-radius: 4px;}
+h2 {font-family: var(--syne); font-size: 28px; margin-bottom: 25px; letter-spacing: -0.5px;}
+h3 {font-family: var(--syne); font-size: 18px; margin-top: 35px; border-bottom: 2px solid var(--volt); display: inline-block; padding-bottom: 2px;}
+p, li {font-size: 15px; color: #333; margin-bottom: 15px;}
+strong {color: var(--dark);}
+
+[data-lang="tr"] .en-only, [data-lang="en"] .tr-only {display: none;}
 </style>
 </head>
 <body data-lang="en">
+
 <div class="container">
-    <div class="lang-bar">
-        <button class="lang-btn active" onclick="setLang('en')">English</button>
-        <button class="lang-btn" onclick="setLang('tr')">Türkçe</button>
+    <div class="controls-bar">
+        <h1 style="font-family: var(--syne); margin: 0; font-size: 24px;">SMS Manager <span style="font-weight: 400; color: #888;">Legal Center</span></h1>
+        <div class="lang-switcher">
+            <button class="btn active" id="btn-en" onclick="setLang('en')">English</button>
+            <button class="btn" id="btn-tr" onclick="setLang('tr')">Türkçe</button>
+        </div>
     </div>
+
     <div class="tabs">
-        <button class="tab-btn active" onclick="showTab('privacy')"><span class="lang-en">Privacy Policy</span><span class="lang-tr">Gizlilik Politikası</span></button>
-        <button class="tab-btn" onclick="showTab('eula')"><span class="lang-en">EULA</span><span class="lang-tr">Kullanıcı Sözleşmesi</span></button>
-        <button class="tab-btn" onclick="showTab('disclaimer')"><span class="lang-en">Disclaimer</span><span class="lang-tr">Sorumluluk Reddi</span></button>
+        <button class="btn active tab-btn" onclick="showTab('privacy')"><span class="en-only">Privacy Policy</span><span class="tr-only">Gizlilik Politikası</span></button>
+        <button class="btn tab-btn" onclick="showTab('eula')"><span class="en-only">EULA</span><span class="tr-only">Kullanıcı Sözleşmesi</span></button>
+        <button class="btn tab-btn" onclick="showTab('kvkk')"><span class="en-only">Disclosure (GDPR/KVKK)</span><span class="tr-only">Aydınlatma Metni</span></button>
+        <button class="btn tab-btn" onclick="showTab('consent')"><span class="en-only">Explicit Consent</span><span class="tr-only">Açık Rıza</span></button>
+        <button class="btn tab-btn" onclick="showTab('disclaimer')"><span class="en-only">Disclaimer</span><span class="tr-only">Sorumluluk Reddi</span></button>
     </div>
 
     <div id="privacy" class="content-section active">
-        <div class="lang-en">
+        <div class="en-only">
             <h2>Privacy Policy</h2>
-            <p><strong>Compliance:</strong> UK GDPR, US CCPA, Australian Privacy Act, and Turkish KVKK.</p>
-            <p><strong>Local Processing:</strong> All analysis and forwarding happen locally. We do not store or transmit your SMS to our servers.</p>
+            <p><strong>Version 1.2 | Compliance: US CCPA/TCPA, UK GDPR, AU Privacy Act 1988, TR KVKK.</strong></p>
+            <div class="shield-box">
+                <strong>Zero-Knowledge & Local-Only Architecture:</strong> This application is built on a "Privacy by Design" framework. We do not operate central servers to store your SMS content. All filtering, blocking, and forwarding actions are executed locally on your device.
+            </div>
+            <h3>1. Information We Process</h3>
+            <p>To provide core services, the app handles: Sender metadata (names/numbers), SMS body content (for rule-matching), and destination numbers. This data is volatile and exists only within the app's local sandbox.</p>
+            <h3>2. International Data Standards</h3>
+            <p><strong>California (US):</strong> We do not sell or share personal information as defined by the CCPA/CPRA. <strong>UK/EU:</strong> Our lawful basis is Contractual Necessity (Art 6.1.b). <strong>Australia:</strong> We adhere to the Australian Privacy Principles regarding local data integrity.</p>
         </div>
-        <div class="lang-tr">
+        <div class="tr-only">
             <h2>Gizlilik Politikası</h2>
-            <p><strong>Uyum:</strong> KVKK, GDPR ve uluslararası gizlilik yasaları.</p>
-            <p><strong>Yerel İşlem:</strong> Tüm veriler cihazınızda işlenir. Sunucu tarafında veri saklanmaz.</p>
+            <p><strong>Versiyon 1.2 | Uyum: 6698 Sayılı KVKK ve Uluslararası Standartlar.</strong></p>
+            <div class="shield-box">
+                <strong>Sıfır Sunucu Politikası:</strong> SMS Manager, verilerinizi merkezi bir sunucuya aktarmaz. Tüm işlemler cihazınızın yerel işlemcisi üzerinden gerçekleştirilir.
+            </div>
+            <h3>1. İşlenen Veriler</h3>
+            <p>Uygulama; gönderici bilgileri, mesaj içerikleri ve yönlendirme hedeflerini yalnızca kullanıcı tanımlı kuralları işletmek amacıyla cihazınızda yerel olarak işler.</p>
         </div>
     </div>
 
     <div id="eula" class="content-section">
-        <div class="lang-en">
+        <div class="en-only">
             <h2>End User License Agreement (EULA)</h2>
-            <div class="bank-shield">
-                <strong>CRITICAL NOTICE REGARDING SENSITIVE DATA:</strong> This app is NOT a financial or banking security tool. You are EXPRESSLY PROHIBITED from using the forwarding feature for:
+            <div class="warning-box">
+                <strong>CRITICAL BANKING & SECURITY PROHIBITION:</strong> This application is NOT intended for the handling of high-stakes financial data. You are strictly prohibited from using the SMS forwarding feature for:
                 <ul>
-                    <li>Bank OTP (One-Time Passwords) or 2FA codes.</li>
-                    <li>Financial transaction confirmations.</li>
-                    <li>Classified or corporate confidential information.</li>
-                    <li>Medical or sensitive legal records.</li>
+                    <li>Banking OTPs (One-Time Passwords) or 2FA (Two-Factor Authentication) codes.</li>
+                    <li>Financial transaction authorization or verification messages.</li>
+                    <li>Classified government or corporate communications.</li>
+                    <li>Medical or legal privileged information.</li>
                 </ul>
-                The Developer accepts ZERO liability for financial loss, identity theft, or data breaches resulting from the forwarding of such information.
+                <strong>The Developer expressly disclaims all liability for financial theft, account takeovers, or unauthorized access to third-party services resulting from the use of this app for the aforementioned purposes.</strong>
             </div>
-            <h3>1. Prohibited Misuse</h3>
-            <p>Using this app to monitor a third party's device without their explicit legal consent is a violation of the <strong>US Wiretap Act</strong>, <strong>UK Investigatory Powers Act</strong>, and <strong>Australian Privacy Laws</strong>. You indemnify the Developer against any legal action arising from such misuse.</p>
-            <h3>2. Limitation of Liability</h3>
-            <p>In no event shall the Developer be liable for any indirect, incidental, or consequential damages (including loss of funds in bank accounts) arising from the app's use.</p>
+            <h3>1. License Grant</h3>
+            <p>We grant you a non-exclusive, non-transferable license to use the app for personal, non-commercial purposes only.</p>
+            <h3>2. Prohibited Usage & Indemnity</h3>
+            <p>You agree not to use this app to violate the <strong>US Wiretap Act</strong>, <strong>UK Investigatory Powers Act</strong>, or local stalking laws. You shall indemnify the Developer against all claims arising from unauthorized monitoring of third parties.</p>
         </div>
-        <div class="lang-tr">
+        <div class="tr-only">
             <h2>Son Kullanıcı Lisans Sözleşmesi (EULA)</h2>
-            <div class="bank-shield">
-                <strong>HASSAS VERİ UYARISI:</strong> Bu uygulama bir bankacılık veya finansal güvenlik aracı DEĞİLDİR. Yönlendirme özelliğini şu veriler için kullanmanız KESİNLİKE YASAKTIR:
+            <div class="warning-box">
+                <strong>BANKACILIK VE GÜVENLİK YASAĞI:</strong> Bu uygulama finansal veri güvenliği aracı değildir. Aşağıdaki verilerin yönlendirilmesi KESİNLİKLE YASAKTIR:
                 <ul>
                     <li>Banka Tek Kullanımlık Şifreleri (OTP) veya 2FA kodları.</li>
-                    <li>Finansal işlem onayları.</li>
-                    <li>Kurumsal ticari sırlar veya gizli belgeler.</li>
-                    <li>Tıbbi veya hassas adli kayıtlar.</li>
+                    <li>Finansal işlem onay mesajları.</li>
+                    <li>Ticari sırlar veya gizli devlet belgeleri.</li>
                 </ul>
-                Bu tür verilerin yönlendirilmesi sonucu oluşacak maddi kayıplardan, kimlik hırsızlığından veya veri sızıntılarından Geliştirici sorumlu tutulamaz.
+                <strong>Bu yasağın ihlali sonucu oluşacak maddi kayıplardan Geliştirici hiçbir koşulda sorumlu tutulamaz.</strong>
             </div>
-            <h3>1. Yasaklı Kullanım</h3>
-            <p>Uygulamanın üçüncü şahısların rızası dışında izleme amacıyla kullanılması <strong>TCK 132-134</strong> uyarınca suçtur. Tüm hukuki sorumluluk kullanıcıya aittir.</p>
+            <p>Uygulamanın üçüncü şahısları izinsiz takip amacıyla kullanılması <strong>TCK 132-134</strong> uyarınca suçtur.</p>
+        </div>
+    </div>
+
+    <div id="kvkk" class="content-section">
+        <div class="en-only">
+            <h2>Disclosure & Data Rights</h2>
+            <h3>Your Rights (GDPR/AU/US)</h3>
+            <p>You have the right to access, rectify, and erase your data. Since all data is local, you can exercise these rights by clearing the app cache or uninstalling the application.</p>
+        </div>
+        <div class="tr-only">
+            <h2>Aydınlatma Metni</h2>
+            <p><strong>Veri Sorumlusu:</strong> Erhan Güngör. Verileriniz KVKK Madde 5 uyarınca "Sözleşmenin İfası" ve "Veri Sorumlusunun Meşru Menfaati" kapsamında işlenmektedir.</p>
+        </div>
+    </div>
+
+    <div id="consent" class="content-section">
+        <div class="en-only">
+            <h2>Explicit Consent for Data Forwarding</h2>
+            <p>By enabling the SMS Forwarding feature, you provide explicit consent for the application to transmit SMS body content from your device to your designated target number via the cellular network.</p>
+        </div>
+        <div class="tr-only">
+            <h2>Açık Rıza Metni</h2>
+            <p>Yönlendirme özelliğini aktif ederek, mesaj içeriklerinizin (gönderici ve içerik dahil) belirlediğiniz numaraya iletilmesine özgür iradenizle ONAY VERİYORUM.</p>
         </div>
     </div>
 
     <div id="disclaimer" class="content-section">
-        <div class="lang-en">
-            <h2>Disclaimer</h2>
-            <div class="warning-box">The Developer provides the app 'AS IS' without any warranties. Users assume all risks related to SMS forwarding and carrier costs.</div>
+        <div class="en-only">
+            <h2>Disclaimer of Liability</h2>
+            <div class="warning-box">
+                <strong>No Warranty:</strong> The application is provided "AS IS". We do not guarantee 100% accuracy in blocking or forwarding. You are responsible for all carrier SMS charges incurred during forwarding.
+            </div>
         </div>
-        <div class="lang-tr">
+        <div class="tr-only">
             <h2>Sorumluluk Reddi</h2>
-            <div class="warning-box">Uygulama 'olduğu gibi' sunulmaktadır. SMS yönlendirme hataları veya operatör ücretlerinden geliştirici sorumlu değildir.</div>
+            <div class="warning-box">
+                Uygulama olduğu gibi sunulmaktadır. Operatör ücretlendirmeleri ve hatalı yönlendirme kaynaklı veri sızıntılarından kullanıcı sorumludur.
+            </div>
         </div>
     </div>
 </div>
+
 <script>
-function setLang(l){document.body.setAttribute('data-lang',l);document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.innerText.toLowerCase().includes(l)));}
-function showTab(id){document.querySelectorAll('.content-section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.getElementById(id).classList.add('active');event.currentTarget.classList.add('active');}
+function setLang(lang){
+    document.body.setAttribute('data-lang', lang);
+    document.getElementById('btn-en').classList.toggle('active', lang==='en');
+    document.getElementById('btn-tr').classList.toggle('active', lang==='tr');
+}
+function showTab(id){
+    document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.currentTarget.classList.add('active');
+}
 </script>
 </body>
 </html>
