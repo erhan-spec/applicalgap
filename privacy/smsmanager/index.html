@@ -3,125 +3,197 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Legal & Privacy Center — SMS Manager</title>
+<title>Privacy Policy — SMS Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--ink:#0d0d0d;--bg:#f0ede8;--volt:#c6ff00;--teal:#00e5b0;--border:#dedad4;--dark:#080e1c;--sans:'DM Sans',sans-serif;--syne:'Syne',sans-serif}
-body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.6;margin:0}
-.container{max-width:1100px;margin:0 auto;padding:40px 5%}
-.controls-bar {display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; flex-wrap: wrap; gap: 15px;}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7;margin:0}
+
+.controls-bar {background:var(--dark);padding:16px 7%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px}
+.wordmark{font-family:var(--syne);font-weight:700;font-size:18px;font-style:italic;letter-spacing:-0.5px;text-decoration:none}
+.wm-a{color:#fff}.wm-al{color:var(--volt)}.wm-gap{color:#fff}
+
 .lang-switcher {display: flex; gap: 8px;}
-.btn {background: #fff; border: 1px solid var(--border); padding: 8px 16px; border-radius: 8px; cursor: pointer; font-family: var(--syne); font-size: 12px; transition: 0.2s;}
-.btn.active {background: var(--dark); color: #fff; border-color: var(--dark);}
-.tabs {display: flex; flex-wrap: wrap; gap: 8px; border-bottom: 1px solid var(--border); padding-bottom: 15px; margin-bottom: 30px;}
-.content-section {display: none; background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 45px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);}
+.btn-lang {background: transparent; border: 1px solid #3d5068; color: #fff; padding: 6px 16px; border-radius: 4px; cursor: pointer; font-size: 12px; transition: 0.2s;}
+.btn-lang.active {background: var(--teal); border-color: var(--teal); color: var(--dark); font-weight: bold;}
+
+.tabs {display: flex; flex-wrap: wrap; gap: 4px; padding: 20px 7%; background: #fff; border-bottom: 1px solid var(--border);}
+.tab-btn {background: #fff; border: 1px solid var(--border); padding: 10px 18px; cursor: pointer; font-family: var(--syne); font-size: 12px; transition: 0.3s; color: #666; border-radius: 4px;}
+.tab-btn.active {background: var(--dark); color: #fff; border-color: var(--dark);}
+
+.content-wrapper {max-width: 1000px; margin: 40px auto; padding: 0 7%;}
+.content-section {display: none;}
 .content-section.active {display: block;}
-.shield-box {background: #f0f7ff; border-left: 5px solid #0070f3; padding: 25px; margin: 25px 0; border-radius: 4px;}
-.warning-box {background: #fff5f5; border-left: 5px solid #ff4d4d; padding: 25px; margin: 25px 0; border-radius: 4px;}
-h2 {font-family: var(--syne); font-size: 28px; margin-bottom: 25px; letter-spacing: -0.5px;}
-h3 {font-family: var(--syne); font-size: 18px; margin-top: 35px; border-bottom: 2px solid var(--volt); display: inline-block;}
-p, li {font-size: 15px; color: #333; margin-bottom: 15px;}
-[data-lang="tr"] .en-only, [data-lang="en"] .tr-only {display: none;}
+
+h2 {font-family: var(--syne); font-size: 24px; margin-bottom: 20px; color: var(--dark); border-bottom: 2px solid var(--volt); display: inline-block; padding-bottom: 4px;}
+h3 {font-family: var(--syne); font-size: 17px; margin-top: 30px; margin-bottom: 15px; color: var(--dark);}
+p, li {font-size: 14.5px; color: #333; margin-bottom: 15px;}
+ul {padding-left: 20px; margin-bottom: 20px;}
+
+.shield-box {background: #f0f7ff; border-left: 5px solid #0070f3; padding: 20px; margin: 20px 0; border-radius: 8px; font-size: 14px;}
+.warning-box {background: #fff5f5; border-left: 5px solid #ff4d4d; padding: 20px; margin: 20px 0; border-radius: 8px; font-size: 14px;}
+
+.lang-tr, .lang-en {display: none;}
+[data-current-lang="tr"] .lang-tr {display: block;}
+[data-current-lang="en"] .lang-en {display: block;}
+
+footer {background:var(--dark); padding:24px 7%; text-align: center; margin-top: 60px;}
+.fl{font-family:var(--syne);font-size:14px;font-weight:700;font-style:italic;color:#fff}
+.fl em{font-style:italic;color:var(--volt)}
 </style>
 </head>
-<body data-lang="en">
+<body data-current-lang="en">
 
-<div class="container">
-    <div class="controls-bar">
-        <h1 style="font-family: var(--syne); margin: 0; font-size: 24px;">SMS Manager <span style="font-weight: 400; color: #888;">Legal Center</span></h1>
-        <div class="lang-switcher">
-            <button class="btn active" onclick="setLang('en')">English</button>
-            <button class="btn" onclick="setLang('tr')">Türkçe</button>
-        </div>
+<div class="controls-bar">
+    <a class="wordmark" href="/"><span class="wm-a">applic</span><span class="wm-al">al</span><span class="wm-gap">gap</span></a>
+    <div class="lang-switcher">
+        <button class="btn-lang active" onclick="setLang('en')">English</button>
+        <button class="btn-lang" onclick="setLang('tr')">Türkçe</button>
     </div>
+</div>
 
-    <div class="tabs">
-        <button class="btn active tab-btn" onclick="showTab('eula')"><span class="en-only">EULA</span><span class="tr-only">Kullanıcı Sözleşmesi</span></button>
-        <button class="btn tab-btn" onclick="showTab('privacy')"><span class="en-only">Privacy Policy</span><span class="tr-only">Gizlilik Politikası</span></button>
-        <button class="btn tab-btn" onclick="showTab('kvkk')"><span class="en-only">Disclosure</span><span class="tr-only">Aydınlatma Metni</span></button>
-        <button class="btn tab-btn" onclick="showTab('consent')"><span class="en-only">Consent</span><span class="tr-only">Açık Rıza</span></button>
-        <button class="btn tab-btn" onclick="showTab('disclaimer')"><span class="en-only">Disclaimer</span><span class="tr-only">Sorumluluk Reddi</span></button>
-    </div>
+<div class="tabs">
+    <button class="tab-btn active" onclick="showTab('privacy')"><span class="lang-en">Privacy Policy</span><span class="lang-tr">Gizlilik Politikası</span></button>
+    <button class="tab-btn" onclick="showTab('eula')"><span class="lang-en">EULA</span><span class="lang-tr">Kullanıcı Sözleşmesi</span></button>
+    <button class="tab-btn" onclick="showTab('disclaimer')"><span class="lang-en">Disclaimer</span><span class="lang-tr">Sorumluluk Reddi</span></button>
+</div>
 
-    <div id="eula" class="content-section active">
-        <div class="en-only">
-            <h2>End User License Agreement (EULA)</h2>
-            <p><strong>Version: 1.0 — 2025</strong> | Erhan Güngör | info@applicalgap.com [cite: 4, 5]</p>
-            <h3>1. Parties</h3>
-            <p>This agreement is between Erhan Güngör ("Application Owner", "We") [cite: 7] and the User ("You") who downloads or uses the app[cite: 9].</p>
-            <h3>2. License Grant</h3>
-            <p>We grant a non-exclusive, non-transferable, revocable license for personal, non-commercial use only. Copying, distribution, modification, or reverse engineering is strictly prohibited[cite: 14, 28].</p>
-            <h3>3. Prohibited Uses</h3>
-            <p>You may not use this app on a device or line you do not own[cite: 23]. Any monitoring of third parties without consent or violation of TCK Art. 132 is strictly prohibited[cite: 24, 25].</p>
-            <div class="warning-box">
-                <strong>INDEMNIFICATION:</strong> You agree to indemnify and hold Erhan Güngör harmless from all claims, costs, and legal fees arising from your violation of these terms or misuse of the application.
-            </div>
-        </div>
-        <div class="tr-only">
-            <h2>Son Kullanıcı Lisans ve Kullanım Sözleşmesi (EULA)</h2>
-            <p><strong>Versiyon 1.0 — 2025</strong> | Erhan Güngör | info@applicalgap.com [cite: 4, 5]</p>
-            <h3>1. Taraflar</h3>
-            <p>Geliştirici Erhan Güngör ("Uygulama Sahibi") [cite: 7] ve Kullanıcı arasındadır[cite: 9].</p>
-            <h3>2. Lisans</h3>
-            <p>Yalnızca kişisel, ticari olmayan amaçlarla kullanılmak üzere münhasır olmayan bir lisans tanınmaktadır. Uygulamanın kopyalanması veya kaynak kodunun çözümlenmesi yasaktır[cite: 14, 28].</p>
-            <h3>3. Yasak Kullanımlar</h3>
-            <p>Uygulamayı kendisine ait olmayan cihazda kullanmak veya rızasız üçüncü kişileri izlemek (TCK 132 kapsamında) kesinlikle yasaktır[cite: 23, 24, 25].</p>
-            <div class="warning-box">
-                <strong>TAZMİNAT YÜKÜMLÜLÜĞÜ:</strong> Kullanıcı, bu sözleşmeyi ihlal etmesi durumunda Erhan Güngör'ün uğrayacağı tüm zararları ve avukatlık ücretlerini tazmin etmeyi kabul eder.
-            </div>
-        </div>
-    </div>
+<div class="content-wrapper">
 
-    <div id="privacy" class="content-section">
-        <div class="en-only">
+    <div id="privacy" class="content-section active">
+        <div class="lang-en">
             <h2>Privacy Policy</h2>
-            <p><strong>Compliance:</strong> UK GDPR, US CCPA/TCPA, AU Privacy Act 1988, TR KVKK[cite: 50, 114].</p>
-            <p>All data is processed locally on your device[cite: 121, 126]. No SMS content is transmitted to our servers.</p>
-            <h3>1. Data Security</h3>
-            <p>We use built-in Android/iOS security mechanisms to prevent unauthorized access[cite: 137]. There is no risk of a server-side breach because we do not operate central servers[cite: 138].</p>
+            <p><strong>Last Updated: April 2026</strong> | Erhan Güngör | info@applicalgap.com</p>
+            
+            <h3>1. Introduction</h3>
+            <p>SMS Manager is committed to transparency. This policy explains how we collect, store, and process your data in compliance with GDPR, CCPA, and the Australian Privacy Act.</p>
+            
+            <h3>2. Data Collection and Usage</h3>
+            <p>To operate the service and provide cloud-based synchronization across your devices, the following data is stored in our secure server-side PostgreSQL database and linked to your account:</p>
+            <ul>
+                <li>Blocked sender names and contact names.</li>
+                <li>Contact phone numbers managed within the app.</li>
+                <li>User-defined SMS forwarding rules.</li>
+            </ul>
+            <div class="shield-box">
+                <strong>Important:</strong> The actual body/content of your SMS messages is NEVER transmitted to or stored on our servers. Processing of message content for filtering and forwarding occurs entirely on your device.
+            </div>
+
+            <h3>3. Account and Authentication</h3>
+            <p>Users must create an account to access the app's features. We use <strong>Clerk</strong> as our third-party authentication provider. When you sign in via email or phone, your credentials are processed securely by Clerk. You can review their privacy practices at <a href="https://clerk.com/privacy" target="_blank">clerk.com/privacy</a>.</p>
+
+            <h3>4. Device Permissions</h3>
+            <ul>
+                <li><strong>READ_SMS / RECEIVE_SMS:</strong> To identify and filter incoming messages locally based on your rules.</li>
+                <li><strong>SEND_SMS:</strong> To facilitate the forwarding feature via your cellular network.</li>
+            </ul>
+            <p><em>Note: The app does NOT read from your device's native phone contact book. All contacts managed in SMS Manager are created manually by the user.</em></p>
+
+            <h3>5. Data Security</h3>
+            <p>Your configuration data is stored in a server-side database protected by industry-standard security measures. This includes encrypted connections (SSL/TLS) for data in transit and strict server-side access controls for data at rest. We do not store payment card details; all transactions are handled by platform-specific providers.</p>
+
+            <h3>6. Third-Party Services</h3>
+            <p>We partner with the following services to provide functionality:</p>
+            <ul>
+                <li><strong>Clerk:</strong> Handles authentication and user identity.</li>
+                <li><strong>RevenueCat:</strong> Manages subscription entitlements and purchase history using a unique user identifier.</li>
+                <li><strong>Apple App Store / Google Play:</strong> Process all financial transactions directly.</li>
+            </ul>
+
+            <h3>7. Subscription Terms</h3>
+            <p>SMS Manager offers Monthly and Annual auto-renewing subscriptions. Payments will be charged to your App Store or Google Play account. Subscriptions automatically renew unless cancelled at least 24 hours before the end of the current billing period. You can manage or cancel your subscription in your platform's account settings at any time.</p>
+
+            <h3>8. Data Retention and Deletion</h3>
+            <p>We retain your account data (rules and contacts) for as long as your account is active. To comply with GDPR, users may request the permanent deletion of their data at any time by contacting us at <a href="mailto:info@applicalgap.com">info@applicalgap.com</a>. Requests are processed within 30 days.</p>
         </div>
-        <div class="tr-only">
+
+        <div class="lang-tr">
             <h2>Gizlilik Politikası</h2>
-            <p><strong>Uyum:</strong> KVKK, GDPR ve uluslararası gizlilik standartları[cite: 50, 114].</p>
-            <p>Tüm veriler cihazınızda yerel olarak işlenir[cite: 121, 126]. SMS içerikleri asla sunucularımıza iletilmez.</p>
-            <h3>1. Veri Güvenliği</h3>
-            <p>Yetkisiz erişimi önlemek için Android/iOS platformunun yerleşik güvenlik mekanizmalarından yararlanılmaktadır[cite: 137]. Sunucu taraflı veri işleme olmadığından sunucu ihlali riski yoktur[cite: 138].</p>
+            <p><strong>Son Güncelleme: Nisan 2026</strong> | Erhan Güngör | info@applicalgap.com</p>
+            
+            <h3>1. Giriş</h3>
+            <p>SMS Manager şeffaflığa önem verir. Bu politika, verilerinizin KVKK, GDPR ve uluslararası gizlilik standartlarına uygun olarak nasıl işlendiğini açıklar.</p>
+            
+            <h3>2. Veri Toplama ve Kullanımı</h3>
+            <p>Hizmetin sunulması ve cihazlarınız arasında senkronizasyon sağlanması amacıyla, aşağıdaki veriler sunucu tarafındaki güvenli PostgreSQL veritabanımızda saklanır ve hesabınızla ilişkilendirilir:</p>
+            <ul>
+                <li>Engellenen gönderici ve kişi adları.</li>
+                <li>Uygulama içinde yönetilen kişi telefon numaraları.</li>
+                <li>Kullanıcı tanımlı SMS yönlendirme kuralları.</li>
+            </ul>
+            <div class="shield-box">
+                <strong>Önemli:</strong> SMS mesajlarınızın içeriği ASLA sunucularımıza iletilmez veya saklanmaz. Filtreleme ve yönlendirme işlemleri tamamen cihazınızda gerçekleşir.
+            </div>
+
+            <h3>3. Hesap ve Kimlik Doğrulama</h3>
+            <p>Uygulama özelliklerini kullanmak için hesap oluşturulması gereklidir. Kimlik doğrulama işlemleri için <strong>Clerk</strong> hizmeti kullanılmaktadır. Giriş bilgileriniz Clerk tarafından güvenli bir şekilde işlenir: <a href="https://clerk.com/privacy" target="_blank">clerk.com/privacy</a>.</p>
+
+            <h3>4. İzinler</h3>
+            <p>Uygulama READ_SMS ve SEND_SMS izinlerini kullanır. Uygulama, cihazınızdaki yerel rehbere (Contact Book) erişim sağlamaz; tüm kişiler kullanıcı tarafından manuel eklenir.</p>
+
+            <h3>5. Veri Güvenliği</h3>
+            <p>Verileriniz, SSL/TLS şifreleme ve sıkı erişim kontrollerine sahip sunucu tarafı veritabanlarında saklanır.</p>
+
+            <h3>6. Üçüncü Taraf Hizmetleri</h3>
+            <p>Kimlik doğrulama için Clerk, abonelik yönetimi için RevenueCat ve ödeme işlemleri için Apple/Google platformları kullanılmaktadır.</p>
+
+            <h3>7. Abonelik Şartları</h3>
+            <p>Abonelikler otomatik olarak yenilenir. Yenileme tarihinden en az 24 saat önce iptal edilmediği sürece App Store/Google Play hesabınızdan tahsilat yapılır. Yönetim işlemlerini platform ayarlarından yapabilirsiniz.</p>
+
+            <h3>8. Veri Saklama ve Silme</h3>
+            <p>Hesabınız aktif olduğu sürece verileriniz saklanır. Verilerinizin silinmesini talep etmek için <a href="mailto:info@applicalgap.com">info@applicalgap.com</a> adresine e-posta gönderebilirsiniz.</p>
+        </div>
+    </div>
+
+    <div id="eula" class="content-section">
+        <div class="lang-en">
+            <h2>End User License Agreement (EULA)</h2>
+            <p>This app is provided as a local management utility. Using this app to intercept third-party communication without consent is strictly prohibited and may violate local laws (e.g., US Wiretap Act, UK Investigatory Powers Act).</p>
+            <div class="warning-box">
+                <strong>Financial Data Warning:</strong> Do not use forwarding for banking OTPs or 2FA codes. The developer is not liable for financial losses arising from forwarded sensitive data.
+            </div>
+        </div>
+        <div class="lang-tr">
+            <h2>Kullanıcı Sözleşmesi</h2>
+            <p>Bu uygulama bir yerel yönetim aracıdır. Üçüncü şahıların rızası dışında izleme amaçlı kullanılması yasaktır ve TCK 132-134 kapsamında suç teşkil edebilir.</p>
         </div>
     </div>
 
     <div id="disclaimer" class="content-section">
-        <div class="en-only">
-            <h2>Disclaimer and Legal Warning</h2>
-            <div class="shield-box">
-                <strong>CRITICAL BANKING & OTP SHIELD:</strong> This app is NOT a financial tool. You are expressly prohibited from forwarding Banking OTPs, 2FA codes, or sensitive financial data. The Developer is NOT liable for any loss of funds or security breaches on third-party accounts.
-            </div>
-            <h3>1. Responsibility</h3>
-            <p>The Developer accepts no criminal or civil liability for unauthorized monitoring or misuse by the user[cite: 167, 168]. User assumes all risks of using the "As Is" application[cite: 181, 182].</p>
+        <div class="lang-en">
+            <h2>Disclaimer</h2>
+            <p>The application is provided "AS IS". We do not guarantee 100% accuracy in filtering. Users are responsible for all carrier charges incurred by SMS forwarding.</p>
         </div>
-        <div class="tr-only">
-            <h2>Sorumluluk Reddi ve Yasal Uyarı</h2>
-            <div class="shield-box">
-                <strong>BANKACILIK VE OTP KALKANI:</strong> Bu uygulama bir finans aracı değildir. Banka şifreleri (OTP) veya 2FA kodlarının yönlendirilmesi kesinlikle yasaktır. Geliştirici, banka hesaplarındaki maddi kayıplardan sorumlu değildir.
-            </div>
-            <h3>1. Sorumsuzluk</h3>
-            <p>Kullanıcının rızasız izleme yapması durumunda Geliştirici hiçbir hukuki sorumluluk üstlenmez[cite: 167, 168]. Uygulama "olduğu gibi" sunulmaktadır.</p>
+        <div class="lang-tr">
+            <h2>Sorumluluk Reddi</h2>
+            <p>Uygulama olduğu gibi sunulmaktadır. SMS yönlendirme kaynaklı operatör ücretlerinden kullanıcı sorumludur.</p>
         </div>
     </div>
 
 </div>
 
+<footer>
+    <div class="fl">applic<em>al</em>gap</div>
+</footer>
+
 <script>
-function setLang(lang){
-    document.body.setAttribute('data-lang', lang);
-    document.querySelectorAll('.lang-switcher button').forEach(b => b.classList.remove('active'));
-    event.currentTarget.classList.add('active');
+function setLang(lang) {
+    document.body.setAttribute('data-current-lang', lang);
+    document.querySelectorAll('.btn-lang').forEach(btn => {
+        btn.classList.toggle('active', btn.innerText.toLowerCase().includes(lang));
+    });
 }
-function showTab(id){
+
+function showTab(id) {
     document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     document.getElementById(id).classList.add('active');
     event.currentTarget.classList.add('active');
 }
 </script>
+
 </body>
 </html>
