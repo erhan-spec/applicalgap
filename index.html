@@ -19,12 +19,12 @@ body{font-family:var(--sans);background:var(--bg);color:var(--ink);font-size:15p
 .wordmark{font-family:var(--syne);font-weight:700;font-size:20px;font-style:italic;letter-spacing:-0.5px;text-decoration:none;display:inline-flex}
 .wm-a{color:#fff}.wm-al{color:var(--volt)}.wm-gap{color:#fff}
 .ticker-wrap{width:100%;background:#0b1220;border-bottom:1px solid #1a2235;overflow:hidden;padding:10px 0}
-.ticker{display:flex;animation:ticker 24s linear infinite;width:max-content}
-.ticker:hover{animation-play-state:paused}
-.ticker-item{display:inline-flex;align-items:center;gap:7px;padding:0 24px;font-size:13px;font-weight:500;color:#8899b8;text-decoration:none;white-space:nowrap;transition:color 0.2s}
+.ticker-track{display:flex;align-items:center;animation:ticker 28s linear infinite;width:max-content}
+.ticker-track:hover{animation-play-state:paused}
+.ticker-item{display:inline-flex;align-items:center;gap:8px;padding:0 29px;font-size:15.6px;font-weight:500;color:#8899b8;text-decoration:none;white-space:nowrap;transition:color 0.2s}
 .ticker-item:hover{color:var(--teal)}
-.ticker-sep{color:#2a3550;padding:0 4px;font-size:16px;line-height:1;flex-shrink:0}
-@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.ticker-sep{color:#2a3550;padding:0 4px;font-size:18px;line-height:1;flex-shrink:0}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-33.333%)}}
 .hero{padding:56px 7% 48px;text-align:center;background:var(--dark)}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;border:1px solid #1e2a40;border-radius:100px;padding:5px 16px;font-size:12px;color:#8899bb;letter-spacing:0.5px;margin-bottom:22px}
 .eyebrow-dot{width:6px;height:6px;background:var(--teal);border-radius:50%;animation:pulse 2s infinite;flex-shrink:0}
@@ -153,25 +153,33 @@ footer{background:var(--dark);padding:16px 7%;display:flex;justify-content:space
 </div>
 
 <div class="ticker-wrap">
-  <div class="ticker">
-    <a class="ticker-item" href="https://harbifirsat.co" target="_blank" rel="noopener"><img src="https://harbifirsat.co/favicon.ico" width="14" height="14" style="border-radius:3px;flex-shrink:0" alt=""> harbifirsat.co &#127481;&#127479;</a>
+  <div class="ticker-track">
+    <a class="ticker-item" href="https://harbifirsat.co" target="_blank" rel="noopener"><img src="https://harbifirsat.co/favicon.ico" width="16" height="16" style="border-radius:3px;flex-shrink:0;display:inline-block" alt="" onerror="this.style.display='none'"> harbifirsat.co &#127481;&#127479;</a>
     <span class="ticker-sep">&#183;</span>
-    <a class="ticker-item" href="https://ozziediscount.net" target="_blank" rel="noopener"><img src="https://ozziediscount.net/favicon.ico" width="14" height="14" style="border-radius:3px;flex-shrink:0" alt=""> ozziediscount.net &#127462;&#127482;</a>
+    <a class="ticker-item" href="https://ozziediscount.net" target="_blank" rel="noopener"><img src="https://ozziediscount.net/favicon.ico" width="16" height="16" style="border-radius:3px;flex-shrink:0;display:inline-block" alt="" onerror="this.style.display='none'"> ozziediscount.net &#127462;&#127482;</a>
     <span class="ticker-sep">&#183;</span>
-    <a class="ticker-item" href="https://guvenio.net" target="_blank" rel="noopener"><img src="https://guvenio.net/favicon.ico" width="14" height="14" style="border-radius:3px;flex-shrink:0" alt=""> guvenio.net &#127481;&#127479;</a>
+    <a class="ticker-item" href="https://guvenio.net" target="_blank" rel="noopener"><img src="https://guvenio.net/favicon.ico" width="16" height="16" style="border-radius:3px;flex-shrink:0;display:inline-block" alt="" onerror="this.style.display='none'"> guvenio.net &#127481;&#127479;</a>
     <span class="ticker-sep">&#183;</span>
-    <a class="ticker-item" href="https://otopik.net" target="_blank" rel="noopener"><img src="https://otopik.net/favicon.ico" width="14" height="14" style="border-radius:3px;flex-shrink:0" alt=""> otopik.net &#127481;&#127479;</a>
+    <a class="ticker-item" href="https://otopik.net" target="_blank" rel="noopener"><img src="https://otopik.net/favicon.ico" width="16" height="16" style="border-radius:3px;flex-shrink:0;display:inline-block" alt="" onerror="this.style.display='none'"> otopik.net &#127481;&#127479;</a>
     <span class="ticker-sep">&#183;</span>
-    <a class="ticker-item" href="https://harbifirsat.co" target="_blank" rel="noopener"><img src="https://harbifirsat.co/favicon.ico" width="14" height="14" style="border-radius:3px;flex-shrink:0" alt=""> harbifirsat.co &#127481;&#127479;</a>
+    <a class="ticker-item" href="https://harbifirsat.co" target="_blank" rel="noopener"><img src="https://harbifirsat.co/favicon.ico" width="16" height="16" style="border-radius:3px;flex-shrink:0;display:inline-block" alt="" onerror="this.style.display='none'"> harbifirsat.co &#127481;&#127479;</a>
     <span class="ticker-sep">&#183;</span>
-    <a class="ticker-item" href="https://ozziediscount.net" target="_blank" rel="noopener"><img src="https://ozziediscount.net/favicon.ico" width="14" height="14" style="border-radius:3px;flex-shrink:0" alt=""> ozziediscount.net &#127462;&#127482;</a>
+    <a class="ticker-item" href="https://ozziediscount.net" target="_blank" rel="noopener"><img src="https://ozziediscount.net/favicon.ico" width="16" height="16" style="border-radius:3px;flex-shrink:0;display:inline-block" alt="" onerror="this.style.display='none'"> ozziediscount.net &#127462;&#127482;</a>
     <span class="ticker-sep">&#183;</span>
-    <a class="ticker-item" href="https://guvenio.net" target="_blank" rel="noopener"><img src="https://guvenio.net/favicon.ico" width="14" height="14" style="border-radius:3px;flex-shrink:0" alt=""> guvenio.net &#127481;&#127479;</a>
+    <a class="ticker-item" href="https://guvenio.net" target="_blank" rel="noopener"><img src="https://guvenio.net/favicon.ico" width="16" height="16" style="border-radius:3px;flex-shrink:0;display:inline-block" alt="" onerror="this.style.display='none'"> guvenio.net &#127481;&#127479;</a>
     <span class="ticker-sep">&#183;</span>
-    <a class="ticker-item" href="https://otopik.net" target="_blank" rel="noopener"><img src="https://otopik.net/favicon.ico" width="14" height="14" style="border-radius:3px;flex-shrink:0" alt=""> otopik.net &#127481;&#127479;</a>
+    <a class="ticker-item" href="https://otopik.net" target="_blank" rel="noopener"><img src="https://otopik.net/favicon.ico" width="16" height="16" style="border-radius:3px;flex-shrink:0;display:inline-block" alt="" onerror="this.style.display='none'"> otopik.net &#127481;&#127479;</a>
+    <span class="ticker-sep">&#183;</span>
+    <a class="ticker-item" href="https://harbifirsat.co" target="_blank" rel="noopener"><img src="https://harbifirsat.co/favicon.ico" width="16" height="16" style="border-radius:3px;flex-shrink:0;display:inline-block" alt="" onerror="this.style.display='none'"> harbifirsat.co &#127481;&#127479;</a>
+    <span class="ticker-sep">&#183;</span>
+    <a class="ticker-item" href="https://ozziediscount.net" target="_blank" rel="noopener"><img src="https://ozziediscount.net/favicon.ico" width="16" height="16" style="border-radius:3px;flex-shrink:0;display:inline-block" alt="" onerror="this.style.display='none'"> ozziediscount.net &#127462;&#127482;</a>
+    <span class="ticker-sep">&#183;</span>
+    <a class="ticker-item" href="https://guvenio.net" target="_blank" rel="noopener"><img src="https://guvenio.net/favicon.ico" width="16" height="16" style="border-radius:3px;flex-shrink:0;display:inline-block" alt="" onerror="this.style.display='none'"> guvenio.net &#127481;&#127479;</a>
+    <span class="ticker-sep">&#183;</span>
+    <a class="ticker-item" href="https://otopik.net" target="_blank" rel="noopener"><img src="https://otopik.net/favicon.ico" width="16" height="16" style="border-radius:3px;flex-shrink:0;display:inline-block" alt="" onerror="this.style.display='none'"> otopik.net &#127481;&#127479;</a>
     <span class="ticker-sep">&#183;</span>
   </div>
-</div>
+</div></div>
 
 <section class="hero">
   <div class="eyebrow"><span class="eyebrow-dot"></span> AI-Powered App Studio &middot; Emerging Markets</div>
@@ -221,7 +229,7 @@ footer{background:var(--dark);padding:16px 7%;display:flex;justify-content:space
         </div>
         <div class="pc-foot">
           <span class="pc-url">harbifirsat.co <svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span class="pc-tag">Affiliate + Sponsored</span>
+          <span class="pc-tag">Affiliate &middot; Brand Sponsorships</span>
         </div>
       </a>
       <a class="pc" href="https://ozziediscount.net" target="_blank" rel="noopener">
@@ -232,7 +240,7 @@ footer{background:var(--dark);padding:16px 7%;display:flex;justify-content:space
         </div>
         <div class="pc-foot">
           <span class="pc-url">ozziediscount.net <svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span class="pc-tag">Affiliate</span>
+          <span class="pc-tag">Affiliate &middot; Brand Sponsorships</span>
         </div>
       </a>
     </div>
@@ -245,7 +253,7 @@ footer{background:var(--dark);padding:16px 7%;display:flex;justify-content:space
         </div>
         <div class="pc-foot" style="border-color:#0f2a50">
           <span class="pc-url" style="color:#60a5fa">otopik.net <svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span class="pc-tag" style="background:#0b1829;color:#4a5a78">Sponsored + Transaction</span>
+          <span class="pc-tag" style="background:#0b1829;color:#4a5a78">Dealer Sponsorships &middot; Transaction Fees</span>
         </div>
       </a>
       <a class="pc" href="https://guvenio.net" target="_blank" rel="noopener">
@@ -256,7 +264,7 @@ footer{background:var(--dark);padding:16px 7%;display:flex;justify-content:space
         </div>
         <div class="pc-foot">
           <span class="pc-url">guvenio.net <svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span class="pc-tag">B2B</span>
+          <span class="pc-tag">SaaS Subscriptions</span>
         </div>
       </a>
     </div>
@@ -272,7 +280,8 @@ footer{background:var(--dark);padding:16px 7%;display:flex;justify-content:space
       <span class="sg-sub">Lower risk &middot; faster revenue &middot; cash cow</span>
       <h4>Proven models, new markets</h4>
       <p>HarbiFırsat follows the Slickdeals model &mdash; $300M+ valuation, 12M MAU in the US. Same category, untapped market. Turkish e-commerce growing 35%+ annually, 60M+ smartphone users.</p>
-      <div class="exit-note"><strong>Exit:</strong> International players expanding to Turkey &amp; MENA seeking local market leaders.</div>
+      <div class="exit-note"><strong>Comparable:</strong> Hubx, a Turkish app studio, reached $200M+ valuation using a similar portfolio model. Our differentiation: we don&rsquo;t just build apps &mdash; we create and own the business model itself. In markets where the category doesn&rsquo;t exist yet, we become the category.</div>
+      <div class="exit-note" style="margin-top:6px"><strong>Exit:</strong> International players expanding to Turkey &amp; MENA seeking local market leaders.</div>
     </div>
     <div class="sg">
       <span class="sg-badge b-l2">Line 2 &middot; Pioneer Gaps</span>
@@ -382,7 +391,7 @@ footer{background:var(--dark);padding:16px 7%;display:flex;justify-content:space
   <div class="contact-inner">
     <div>
       <h2>Let&rsquo;s talk<br><em>opportunities.</em></h2>
-      <p class="contact-sub">We&rsquo;re in active growth phase across two markets with four live products. If you&rsquo;re interested in partnering or discussing investment, we&rsquo;d love to connect. We reply within 24 hours.</p>
+      <p class="contact-sub">We&rsquo;re in active growth phase across two markets with four live products. We&rsquo;re not looking for just capital &mdash; we&rsquo;re looking for strategic partners who bring market access, distribution, or acquisition pathways. We reply within 24 hours.</p>
     </div>
     <div class="contact-right">
       <a class="email-btn" id="ebtn" href="#">hello&#64;applicalgap.com</a>
