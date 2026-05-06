@@ -12,21 +12,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --ink:#0d0d0d;--bg:#f0ede8;--volt:#c6ff00;--orange:#ff5c00;
-  --teal:#00e5b0;--border:#dedad4;--dark:#080e1c;--card:#e8e4de;
-  --syne:'Syne',system-ui,sans-serif;
-  --sans:'DM Sans',system-ui,sans-serif;
-}
+:root{--ink:#0d0d0d;--bg:#f0ede8;--volt:#c6ff00;--orange:#ff5c00;--teal:#00e5b0;--border:#dedad4;--dark:#080e1c;--card:#e8e4de;--syne:'Syne',system-ui,sans-serif;--sans:'DM Sans',system-ui,sans-serif}
 html{scroll-behavior:smooth}
 body{font-family:var(--sans);background:var(--bg);color:var(--ink);font-size:15px;line-height:1.6;overflow-x:hidden;margin:0}
-
-/* LOGO */
 .logobar{background:var(--dark);padding:16px 7%;display:flex;align-items:center}
 .wordmark{font-family:var(--syne);font-weight:700;font-size:20px;font-style:italic;letter-spacing:-0.5px;text-decoration:none;display:inline-flex}
 .wm-a{color:#fff}.wm-al{color:var(--volt)}.wm-gap{color:#fff}
-
-/* HERO */
+.ticker-wrap{width:100%;background:#0b1220;border-bottom:1px solid #1a2235;overflow:hidden;padding:10px 0}
+.ticker{display:flex;animation:ticker 24s linear infinite;width:max-content}
+.ticker:hover{animation-play-state:paused}
+.ticker-item{display:inline-flex;align-items:center;gap:7px;padding:0 24px;font-size:13px;font-weight:500;color:#8899b8;text-decoration:none;white-space:nowrap;transition:color 0.2s}
+.ticker-item:hover{color:var(--teal)}
+.ticker-sep{color:#2a3550;padding:0 4px;font-size:16px;line-height:1;flex-shrink:0}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .hero{padding:56px 7% 48px;text-align:center;background:var(--dark)}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;border:1px solid #1e2a40;border-radius:100px;padding:5px 16px;font-size:12px;color:#8899bb;letter-spacing:0.5px;margin-bottom:22px}
 .eyebrow-dot{width:6px;height:6px;background:var(--teal);border-radius:50%;animation:pulse 2s infinite;flex-shrink:0}
@@ -35,29 +33,21 @@ body{font-family:var(--sans);background:var(--bg);color:var(--ink);font-size:15p
 .hero h1 .gaps{color:#9ca3af}
 .hero h1 .value{color:#4ade80}
 .hero-sub{font-size:16px;color:#9aaac4;max-width:460px;margin:0 auto;line-height:1.6}
-
-/* STATS */
 .stats{display:flex;align-items:stretch;justify-content:center;background:var(--dark);border-top:1px solid #1a2235;border-bottom:1px solid #1a2235}
 .stat-b{flex:1;text-align:center;padding:20px 12px;border-right:1px solid #1a2235;max-width:200px}
 .stat-b:last-child{border-right:none}
 .stat-n{font-family:var(--syne);font-size:28px;font-weight:700;letter-spacing:-1px;line-height:1;color:#fff}
 .stat-n em{font-style:normal;color:var(--teal)}
 .stat-l{font-size:10px;color:#7a8fa8;text-transform:uppercase;letter-spacing:1.5px;margin-top:4px}
-
-/* THESIS */
 .thesis{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:0;border-bottom:1px solid var(--border);padding:12px 7%;background:var(--card)}
 .th{display:flex;align-items:center;gap:7px;padding:6px 20px;font-size:13px;font-weight:500;border-right:1px solid var(--border);color:var(--ink)}
 .th:last-child{border-right:none}
 .th-dot{width:5px;height:5px;background:var(--orange);border-radius:50%;flex-shrink:0}
-
-/* SECTION LABELS */
 .sec-label{display:block;font-size:10px;text-transform:uppercase;letter-spacing:2.5px;font-weight:500;text-align:center;margin-bottom:8px}
 .teal{color:var(--teal)}.orange{color:var(--orange)}
 .sec-title{font-family:var(--syne);font-size:clamp(20px,3vw,30px);font-weight:700;letter-spacing:-1px;text-align:center;margin-bottom:20px}
 .dt{color:#fff}.lt{color:var(--ink)}
 .sec-sub{font-size:14px;color:#888;max-width:420px;margin:0 auto 24px;text-align:center;line-height:1.6}
-
-/* PLAYBOOK */
 .playbook{background:var(--dark);padding:40px 7%}
 .pl-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid #1e2a40;border-radius:14px;overflow:hidden}
 .pl-step{padding:20px 16px;border-right:1px solid #1e2a40}
@@ -67,10 +57,7 @@ body{font-family:var(--sans);background:var(--bg);color:var(--ink);font-size:15p
 .pl-step p{font-size:12px;color:#7a8fa8;line-height:1.5}
 .pl-note{margin-top:14px;text-align:center;font-size:12px;color:#7a8fa8;max-width:560px;margin-left:auto;margin-right:auto}
 .pl-note strong{color:var(--teal)}
-
-/* PRODUCTS */
 .products{padding:40px 7%;background:var(--bg)}
-.prod-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;max-width:820px;margin:0 auto}
 .pc{border:1.5px solid #1a2235;border-radius:16px;overflow:hidden;text-decoration:none;color:#fff;background:var(--dark);transition:border-color 0.2s,transform 0.18s;display:flex;flex-direction:column}
 .pc:hover{transform:translateY(-3px);border-color:var(--teal)}
 .pc-body{padding:22px 20px 16px;flex:1}
@@ -87,8 +74,6 @@ body{font-family:var(--sans);background:var(--bg);color:var(--ink);font-size:15p
 .pc-url{font-size:12px;font-weight:500;display:inline-flex;align-items:center;gap:4px;color:var(--teal);opacity:0.85;text-decoration:none;transition:opacity 0.2s}
 .pc:hover .pc-url{opacity:1}
 .pc-tag{font-size:11px;background:#0f1829;border-radius:100px;padding:3px 10px;color:#4a5a78;font-weight:500}
-
-/* STRATEGY */
 .strategy{background:var(--card);border-top:1px solid var(--border);padding:40px 7%}
 .strat-row{display:flex;flex-direction:row;gap:14px;max-width:820px;margin:0 auto}
 .sg{background:var(--bg);border:1.5px solid var(--border);border-radius:14px;padding:22px 20px;flex:1;min-width:0;display:flex;flex-direction:column}
@@ -99,8 +84,6 @@ body{font-family:var(--sans);background:var(--bg);color:var(--ink);font-size:15p
 .sg p{font-size:13px;color:#777;line-height:1.55;flex:1}
 .exit-note{font-size:11px;color:#bbb;margin-top:10px;line-height:1.45}
 .exit-note strong{color:#999}
-
-/* PIPELINE */
 .pipeline{padding:40px 7%;background:var(--bg)}
 .pl-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;max-width:820px;margin:0 auto}
 .pl-card{border:1.5px solid var(--border);border-radius:14px;padding:18px 16px;background:var(--card)}
@@ -111,23 +94,18 @@ body{font-family:var(--sans);background:var(--bg);color:var(--ink);font-size:15p
 .pl-item.lnk:hover{border-color:var(--teal)}
 .pl-item-top{display:flex;align-items:center;justify-content:space-between;gap:4px}
 .pl-item-type{font-size:11px;font-weight:700;color:var(--ink)}
-.pl-item-link{font-size:10px;color:var(--teal);font-weight:500;display:inline-flex;align-items:center;gap:3px;opacity:0.8;white-space:nowrap}
+.pl-item-link{font-size:10px;color:var(--teal);font-weight:500;opacity:0.8;white-space:nowrap}
 .pl-item-industry{font-size:11px;color:#999}
-
-/* MOAT */
 .moat{background:var(--dark);padding:40px 7%}
 .moat-inner{max-width:820px;margin:0 auto}
-.moat-top{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;margin-bottom:14px;background:#0b1220;border:1px solid #1a2235;border-radius:14px;padding:22px 26px}
-.moat-big-n{font-family:var(--syne);font-size:56px;font-weight:700;color:var(--teal);letter-spacing:-2px;line-height:1;white-space:nowrap}
-.moat-big-title{font-size:14px;font-weight:700;color:#fff;margin-bottom:4px}
-.moat-big-sub{font-size:12px;color:#7a8fa8;line-height:1.5}
+.moat-top{background:#0b1220;border:1px solid #1a2235;border-radius:14px;padding:22px 26px;margin-bottom:14px}
+.moat-big-title{font-family:var(--syne);font-size:17px;font-weight:700;color:#fff;margin-bottom:10px}
+.moat-big-sub{font-size:13px;color:#7a8fa8;line-height:1.6}
 .moat-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
 .mc{background:#0b1220;border:1px solid #1a2235;border-radius:12px;padding:16px 14px}
 .mc-icon{width:30px;height:30px;border-radius:8px;background:#0f2040;display:flex;align-items:center;justify-content:center;margin-bottom:9px}
 .mc h4{font-family:var(--syne);font-size:12px;font-weight:700;color:#fff;margin-bottom:5px}
 .mc p{font-size:12px;color:#7a8fa8;line-height:1.5}
-
-/* TEAM */
 .team{padding:40px 7%;background:var(--card);border-top:1px solid var(--border)}
 .team-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;max-width:820px;margin:20px auto 0}
 .tc{background:var(--bg);border:1.5px solid var(--border);border-radius:14px;padding:20px 18px}
@@ -140,51 +118,32 @@ body{font-family:var(--sans);background:var(--bg);color:var(--ink);font-size:15p
 .tc-pts li::before{content:'';width:4px;height:4px;border-radius:50%;flex-shrink:0;margin-top:6px}
 .li-work::before{background:var(--border)}
 .li-human::before{background:var(--teal)}
-
-/* CONTACT */
 .contact{background:var(--dark);padding:52px 7%}
 .contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;max-width:820px;margin:0 auto}
 .contact h2{font-family:var(--syne);font-size:clamp(26px,4vw,40px);font-weight:700;letter-spacing:-1px;color:#fff;line-height:1.05}
 .contact h2 em{font-style:normal;color:var(--volt)}
 .contact-sub{font-size:14px;color:#8899b8;margin-top:10px;line-height:1.6}
-.contact-right{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.contact-right{display:flex;flex-direction:column;align-items:center;gap:10px}
 .email-btn{display:inline-flex;align-items:center;gap:8px;background:var(--volt);color:var(--ink);border-radius:100px;padding:13px 26px;font-size:14px;font-weight:700;font-family:var(--syne);text-decoration:none;transition:background 0.2s,transform 0.15s}
 .email-btn:hover{background:#d4ff1a;transform:scale(1.04)}
-.contact-note{font-size:12px;color:#6b7a99}
-
-/* FOOTER */
+.contact-note{font-size:12px;color:#6b7a99;text-align:center}
 footer{background:var(--dark);padding:16px 7%;display:flex;justify-content:space-between;align-items:center;border-top:1px solid #111827;flex-wrap:wrap;gap:8px}
 .fl{font-family:var(--syne);font-size:14px;font-weight:700;font-style:italic;color:#fff}
 .fl em{font-style:italic;color:var(--volt)}
 .fc{font-size:11px;color:#3d5068}
-
-/* MOBILE */
 @media(max-width:680px){
   .pl-steps{grid-template-columns:1fr 1fr}
   .pl-step{border-right:none;border-bottom:1px solid #1e2a40}
   .pl-step:nth-child(odd){border-right:1px solid #1e2a40}
   .pl-step:last-child{border-bottom:none}
-  .prod-grid{grid-template-columns:1fr}
   .strat-row{flex-direction:column}
-  .pl-grid{grid-template-columns:1fr}
-  .moat-grid{grid-template-columns:1fr 1fr}
-  .moat-top{grid-template-columns:1fr}
-  .team-grid{grid-template-columns:1fr}
+  .pl-grid,.prod-cols,.moat-grid,.team-grid{grid-template-columns:1fr !important}
   .contact-inner{grid-template-columns:1fr;gap:28px}
   .stats{flex-wrap:wrap}
   .stat-b{border-right:none;border-bottom:1px solid #1a2235;max-width:100%;width:50%;flex:none}
   .th{border-right:none;border-bottom:1px solid var(--border);width:100%;justify-content:center}
   .th:last-child{border-bottom:none}
 }
-
-.ticker-wrap{width:100%;background:#0b1220;border-bottom:1px solid #1a2235;overflow:hidden;padding:10px 0}
-.ticker{display:flex;gap:0;animation:ticker 22s linear infinite;width:max-content}
-.ticker:hover{animation-play-state:paused}
-.ticker-item{display:inline-flex;align-items:center;gap:8px;padding:0 32px;font-size:13px;font-weight:500;color:#8899b8;text-decoration:none;white-space:nowrap;transition:color 0.2s}
-.ticker-item:hover{color:var(--teal)}
-.ticker-flag{font-size:15px;line-height:1}
-.ticker-dot{width:4px;height:4px;border-radius:50%;background:#1e2a40;margin:0 6px;flex-shrink:0}
-@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 </style>
 </head>
 <body>
@@ -195,24 +154,25 @@ footer{background:var(--dark);padding:16px 7%;display:flex;justify-content:space
 
 <div class="ticker-wrap">
   <div class="ticker">
-    <a class="ticker-item" href="https://harbifirsat.co" target="_blank" rel="noopener"><img src="https://harbifirsat.co/favicon.ico" width="14" height="14" style="border-radius:3px;flex-shrink:0" alt=""> harbifirsat.co <span class="ticker-flag">🇹🇷</span></a>
-    <span style="color:#2a3550;padding:0 8px;font-size:16px">&#183;</span>
-    <a class="ticker-item" href="https://ozziediscount.net" target="_blank" rel="noopener"><img src="https://ozziediscount.net/favicon.ico" width="14" height="14" style="border-radius:3px;flex-shrink:0" alt=""> ozziediscount.net <span class="ticker-flag">🇦🇺</span></a>
-    <span style="color:#2a3550;padding:0 8px;font-size:16px">&#183;</span>
-    <a class="ticker-item" href="https://guvenio.net" target="_blank" rel="noopener"><img src="https://guvenio.net/favicon.ico" width="14" height="14" style="border-radius:3px;flex-shrink:0" alt=""> guvenio.net <span class="ticker-flag">🇹🇷</span></a>
-    <span style="color:#2a3550;padding:0 8px;font-size:16px">&#183;</span>
-    <a class="ticker-item" href="https://otopik.net" target="_blank" rel="noopener"><img src="https://otopik.net/favicon.ico" width="14" height="14" style="border-radius:3px;flex-shrink:0" alt=""> otopik.net <span class="ticker-flag">🇹🇷</span></a>
-    <span style="color:#2a3550;padding:0 8px;font-size:16px">&#183;</span>
-    <a class="ticker-item" href="https://harbifirsat.co" target="_blank" rel="noopener"><img src="https://harbifirsat.co/favicon.ico" width="14" height="14" style="border-radius:3px;flex-shrink:0" alt=""> harbifirsat.co <span class="ticker-flag">🇹🇷</span></a>
-    <span style="color:#2a3550;padding:0 8px;font-size:16px">&#183;</span>
-    <a class="ticker-item" href="https://ozziediscount.net" target="_blank" rel="noopener"><img src="https://ozziediscount.net/favicon.ico" width="14" height="14" style="border-radius:3px;flex-shrink:0" alt=""> ozziediscount.net <span class="ticker-flag">🇦🇺</span></a>
-    <span style="color:#2a3550;padding:0 8px;font-size:16px">&#183;</span>
-    <a class="ticker-item" href="https://guvenio.net" target="_blank" rel="noopener"><img src="https://guvenio.net/favicon.ico" width="14" height="14" style="border-radius:3px;flex-shrink:0" alt=""> guvenio.net <span class="ticker-flag">🇹🇷</span></a>
-    <span style="color:#2a3550;padding:0 8px;font-size:16px">&#183;</span>
-    <a class="ticker-item" href="https://otopik.net" target="_blank" rel="noopener"><img src="https://otopik.net/favicon.ico" width="14" height="14" style="border-radius:3px;flex-shrink:0" alt=""> otopik.net <span class="ticker-flag">🇹🇷</span></a>
-    <span style="color:#2a3550;padding:0 8px;font-size:16px">&#183;</span>
+    <a class="ticker-item" href="https://harbifirsat.co" target="_blank" rel="noopener"><img src="https://harbifirsat.co/favicon.ico" width="14" height="14" style="border-radius:3px;flex-shrink:0" alt=""> harbifirsat.co &#127481;&#127479;</a>
+    <span class="ticker-sep">&#183;</span>
+    <a class="ticker-item" href="https://ozziediscount.net" target="_blank" rel="noopener"><img src="https://ozziediscount.net/favicon.ico" width="14" height="14" style="border-radius:3px;flex-shrink:0" alt=""> ozziediscount.net &#127462;&#127482;</a>
+    <span class="ticker-sep">&#183;</span>
+    <a class="ticker-item" href="https://guvenio.net" target="_blank" rel="noopener"><img src="https://guvenio.net/favicon.ico" width="14" height="14" style="border-radius:3px;flex-shrink:0" alt=""> guvenio.net &#127481;&#127479;</a>
+    <span class="ticker-sep">&#183;</span>
+    <a class="ticker-item" href="https://otopik.net" target="_blank" rel="noopener"><img src="https://otopik.net/favicon.ico" width="14" height="14" style="border-radius:3px;flex-shrink:0" alt=""> otopik.net &#127481;&#127479;</a>
+    <span class="ticker-sep">&#183;</span>
+    <a class="ticker-item" href="https://harbifirsat.co" target="_blank" rel="noopener"><img src="https://harbifirsat.co/favicon.ico" width="14" height="14" style="border-radius:3px;flex-shrink:0" alt=""> harbifirsat.co &#127481;&#127479;</a>
+    <span class="ticker-sep">&#183;</span>
+    <a class="ticker-item" href="https://ozziediscount.net" target="_blank" rel="noopener"><img src="https://ozziediscount.net/favicon.ico" width="14" height="14" style="border-radius:3px;flex-shrink:0" alt=""> ozziediscount.net &#127462;&#127482;</a>
+    <span class="ticker-sep">&#183;</span>
+    <a class="ticker-item" href="https://guvenio.net" target="_blank" rel="noopener"><img src="https://guvenio.net/favicon.ico" width="14" height="14" style="border-radius:3px;flex-shrink:0" alt=""> guvenio.net &#127481;&#127479;</a>
+    <span class="ticker-sep">&#183;</span>
+    <a class="ticker-item" href="https://otopik.net" target="_blank" rel="noopener"><img src="https://otopik.net/favicon.ico" width="14" height="14" style="border-radius:3px;flex-shrink:0" alt=""> otopik.net &#127481;&#127479;</a>
+    <span class="ticker-sep">&#183;</span>
   </div>
 </div>
+
 <section class="hero">
   <div class="eyebrow"><span class="eyebrow-dot"></span> AI-Powered App Studio &middot; Emerging Markets</div>
   <h1>Turn <span class="gaps">gaps</span><br>into <span class="value">value.</span></h1>
@@ -220,8 +180,8 @@ footer{background:var(--dark);padding:16px 7%;display:flex;justify-content:space
 </section>
 
 <div class="stats">
-  <div class="stat-b"><div class="stat-n">3<em>+</em></div><div class="stat-l">Products live &amp; launching</div></div>
-  <div class="stat-b"><div class="stat-n">3<em>+</em></div><div class="stat-l">Markets entered</div></div>
+  <div class="stat-b"><div class="stat-n">4<em>+</em></div><div class="stat-l">Products live</div></div>
+  <div class="stat-b"><div class="stat-n">2</div><div class="stat-l">Markets: TR &amp; AU</div></div>
   <div class="stat-b"><div class="stat-n">$1.2<em>B</em></div><div class="stat-l">TAM, otopik alone</div></div>
   <div class="stat-b"><div class="stat-n">18<em>mo</em></div><div class="stat-l">Path to exit</div></div>
 </div>
@@ -249,49 +209,57 @@ footer{background:var(--dark);padding:16px 7%;display:flex;justify-content:space
 <section class="products" id="products">
   <span class="sec-label orange">Live products</span>
   <h2 class="sec-title lt">Built by us. Used by real people.</h2>
-  <p class="sec-sub">Three platforms live now. More launching throughout 2026.</p>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:820px;margin:0 auto">
-
+  <p class="sec-sub">Four platforms live now. More launching throughout 2026.</p>
+  <div class="prod-cols" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:820px;margin:0 auto">
     <div style="display:flex;flex-direction:column;gap:14px">
-
       <a class="pc" href="https://harbifirsat.co" target="_blank" rel="noopener">
         <div class="pc-body">
-          <div class="pc-top"><div class="lb lb-h">HarbiFirsat</div><div class="status s-live"><span class="sd sd-live"></span> Live</div></div>
+          <div class="pc-top"><div class="lb lb-h">HarbiFırsat</div><div class="status s-live"><span class="sd sd-live"></span> Live</div></div>
           <h3>Deal community &amp; brand platform</h3>
-          <p>AI-powered deal discovery for Turkey with a direct marketing channel for brands. Affiliate revenue + sponsored placements.</p><div style="display:flex;gap:16px;margin-top:12px;flex-wrap:wrap"><div style="background:#0d1628;border:1px solid #1a2235;border-radius:8px;padding:8px 12px;text-align:center"><div style="font-family:var(--syne);font-size:18px;font-weight:700;color:var(--teal)">5K+</div><div style="font-size:10px;color:#4a5a78;text-transform:uppercase;letter-spacing:1px;margin-top:2px">First month visitors</div></div></div>
+          <p>AI-powered deal discovery for Turkey with a direct marketing channel for brands. Affiliate revenue + sponsored placements.</p>
+          <div style="margin-top:12px"><div style="background:#0d1628;border:1px solid #1a2235;border-radius:8px;padding:8px 12px;display:inline-block;text-align:center"><div style="font-family:var(--syne);font-size:18px;font-weight:700;color:var(--teal)">5K+</div><div style="font-size:10px;color:#4a5a78;text-transform:uppercase;letter-spacing:1px;margin-top:2px">First month visitors</div></div></div>
         </div>
-        <div class="pc-foot" style="flex-direction:column;align-items:flex-start;gap:10px">
+        <div class="pc-foot">
           <span class="pc-url">harbifirsat.co <svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <a href="https://apps.apple.com/tr/app/harbif%C4%B1rsat/id6760184037?l=tr" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:#fff;background:#1a1a2e;border:1px solid #2a2a4e;border-radius:8px;padding:5px 12px;text-decoration:none"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg> Download on App Store</a>
+          <span class="pc-tag">Affiliate + Sponsored</span>
         </div>
       </a>
-
       <a class="pc" href="https://ozziediscount.net" target="_blank" rel="noopener">
         <div class="pc-body">
           <div class="pc-top"><div class="lb" style="background:#1a9a5c;color:#fff">OzzieDiscount</div><div class="status s-live"><span class="sd sd-live"></span> Live</div></div>
-          <h3>Australia&#39;s AI-curated deals platform</h3>
-          <p>Same playbook, different market. Fully automated from scraping to publishing &#8212; zero manual effort. Validates our cross-market model.</p>
+          <h3>Australia&rsquo;s AI-curated deals platform</h3>
+          <p>Same playbook, different market. Fully automated from scraping to publishing &mdash; zero manual effort. Validates our cross-market model.</p>
         </div>
         <div class="pc-foot">
           <span class="pc-url">ozziediscount.net <svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           <span class="pc-tag">Affiliate</span>
         </div>
       </a>
-
     </div>
-
-    <a class="pc" href="https://otopik.net" target="_blank" rel="noopener" style="border-color:#0f2a50">
-      <div class="pc-body">
-        <div class="pc-top"><div class="lb lb-o">otopik</div><div class="status s-beta"><span class="sd sd-beta"></span> Launching April 2026</div></div>
-        <h3>World&#39;s first new car marketplace</h3>
-        <p>1.24M cars sold in Turkey annually &#8212; yet no centralised comparison platform exists. Compare all brands, transparent pricing, seamless purchase flow. $1.2B TAM. Zero direct competition.</p>
-      </div>
-      <div class="pc-foot" style="border-color:#0f2a50">
-        <span class="pc-url" style="color:#60a5fa">otopik.net <svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        <span class="pc-tag" style="background:#0b1829;color:#4a5a78">Sponsored + Transaction</span>
-      </div>
-    </a>
-
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <a class="pc" href="https://otopik.net" target="_blank" rel="noopener" style="border-color:#0f2a50">
+        <div class="pc-body">
+          <div class="pc-top"><div class="lb lb-o">otopik</div><div class="status s-beta"><span class="sd sd-beta"></span> Launching April 2026</div></div>
+          <h3>World&rsquo;s first new car marketplace</h3>
+          <p>1.24M cars sold in Turkey annually &mdash; yet no centralised comparison platform exists. Compare all brands, transparent pricing, seamless purchase flow. $1.2B TAM. Zero direct competition.</p>
+        </div>
+        <div class="pc-foot" style="border-color:#0f2a50">
+          <span class="pc-url" style="color:#60a5fa">otopik.net <svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="pc-tag" style="background:#0b1829;color:#4a5a78">Sponsored + Transaction</span>
+        </div>
+      </a>
+      <a class="pc" href="https://guvenio.net" target="_blank" rel="noopener">
+        <div class="pc-body">
+          <div class="pc-top"><div class="lb" style="background:#7c3aed;color:#fff">guvenio</div><div class="status s-live"><span class="sd sd-live"></span> Live</div></div>
+          <h3>Business reviews platform</h3>
+          <p>Trustpilot-style business review platform for the Turkish market. Helping consumers make informed decisions and businesses build verified reputations.</p>
+        </div>
+        <div class="pc-foot">
+          <span class="pc-url">guvenio.net <svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="pc-tag">B2B</span>
+        </div>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -303,8 +271,8 @@ footer{background:var(--dark);padding:16px 7%;display:flex;justify-content:space
       <span class="sg-badge b-l1">Line 1 &middot; Translate Winners</span>
       <span class="sg-sub">Lower risk &middot; faster revenue &middot; cash cow</span>
       <h4>Proven models, new markets</h4>
-      <p>Replicate established Western platforms in underserved markets. HarbiFırsat follows the Slickdeals model &#8212; $300M+ valuation, 12M MAU in the US. Same category, untapped market.</p>
-      <div class="exit-note"><strong>Comparable:</strong> Slickdeals ($300M+ val, 12M MAU). Turkish e-commerce growing 35%+ annually, 60M+ smartphone users.</div><div class="exit-note" style="margin-top:6px"><strong>Exit:</strong> International players expanding to Turkey &amp; MENA seeking local market leaders.</div>
+      <p>HarbiFırsat follows the Slickdeals model &mdash; $300M+ valuation, 12M MAU in the US. Same category, untapped market. Turkish e-commerce growing 35%+ annually, 60M+ smartphone users.</p>
+      <div class="exit-note"><strong>Exit:</strong> International players expanding to Turkey &amp; MENA seeking local market leaders.</div>
     </div>
     <div class="sg">
       <span class="sg-badge b-l2">Line 2 &middot; Pioneer Gaps</span>
@@ -324,22 +292,25 @@ footer{background:var(--dark);padding:16px 7%;display:flex;justify-content:space
       <span class="pl-q">Q1&ndash;Q2 2026 &middot; Now</span>
       <h4>Launching</h4>
       <a class="pl-item lnk" href="https://harbifirsat.co" target="_blank" rel="noopener">
-        <div class="pl-item-top"><span class="pl-item-type">HarbiFırsat</span><span class="pl-item-link">harbifirsat.co <svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        <div class="pl-item-top"><span class="pl-item-type">HarbiFırsat</span><span class="pl-item-link">harbifirsat.co &#8599;</span></div>
         <span class="pl-item-industry">E-Commerce &middot; Affiliate</span>
       </a>
       <a class="pl-item lnk" href="https://otopik.net" target="_blank" rel="noopener">
-        <div class="pl-item-top"><span class="pl-item-type">otopik</span><span class="pl-item-link">otopik.net <svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        <div class="pl-item-top"><span class="pl-item-type">otopik</span><span class="pl-item-link">otopik.net &#8599;</span></div>
         <span class="pl-item-industry">Automotive &middot; Marketplace</span>
       </a>
     </div>
     <div class="pl-card" style="border-color:#00e5b040">
       <span class="pl-q" style="color:var(--teal)">Q4 2026 &middot; Next wave</span>
       <h4>Building</h4>
-      <a class="pl-item lnk" href="https://guvenio.net" target="_blank" rel="noopener"><div class="pl-item-top"><span class="pl-item-type">guvenio.net</span><span class="pl-item-link">↗</span></div><span class="pl-item-industry">Business Reviews &middot; B2B</span></a>
-      <div class="pl-item"><span class="pl-item-type">#App 4</span><span class="pl-item-industry">HR Tech &middot; B2B</span></div>
-    </div>
-    
-      <div class="pl-item"><span class="pl-item-type">#App 6</span><span class="pl-item-industry">Health Tech &middot; B2C</span></div>
+      <a class="pl-item lnk" href="https://guvenio.net" target="_blank" rel="noopener">
+        <div class="pl-item-top"><span class="pl-item-type">guvenio</span><span class="pl-item-link">guvenio.net &#8599;</span></div>
+        <span class="pl-item-industry">Business Reviews &middot; B2B</span>
+      </a>
+      <div class="pl-item">
+        <div class="pl-item-top"><span class="pl-item-type">#App 4</span></div>
+        <span class="pl-item-industry">HR Tech &middot; B2B</span>
+      </div>
     </div>
   </div>
 </section>
@@ -348,11 +319,9 @@ footer{background:var(--dark);padding:16px 7%;display:flex;justify-content:space
   <span class="sec-label teal">Competitive advantage</span>
   <h2 class="sec-title dt">Our apps run themselves</h2>
   <div class="moat-inner">
-    <div class="moat-top" style="grid-template-columns:1fr">
-      <div>
-        <div class="moat-big-title" style="font-family:var(--syne);font-size:17px;font-weight:700;color:#fff;margin-bottom:10px">Traditional studios haemorrhage cash on operations. We don&rsquo;t.</div>
-        <div class="moat-big-sub" style="font-size:13px">A typical 5-person app studio runs $40K&ndash;80K/month before a single line of revenue. Our AI-native architecture handles content creation, data management, customer service and marketing autonomously &mdash; keeping burn minimal from day one while we validate each product.</div>
-      </div>
+    <div class="moat-top">
+      <div class="moat-big-title">Traditional studios haemorrhage cash on operations. We don&rsquo;t.</div>
+      <div class="moat-big-sub">A typical 5-person app studio runs $40K&ndash;80K/month before a single line of revenue. Our AI-native architecture handles content creation, data management, customer service and marketing autonomously &mdash; keeping burn minimal from day one while we validate each product.</div>
     </div>
     <div class="moat-grid">
       <div class="mc"><div class="mc-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="5" height="5" rx="1" fill="#00e5b0"/><rect x="9" y="2" width="5" height="5" rx="1" fill="#00e5b0" opacity="0.5"/><rect x="2" y="9" width="5" height="5" rx="1" fill="#00e5b0" opacity="0.5"/><rect x="9" y="9" width="5" height="5" rx="1" fill="#00e5b0" opacity="0.3"/></svg></div><h4>Content creation</h4><p>Blog posts, social updates, product descriptions &mdash; generated on-demand. No writers or editors needed.</p></div>
@@ -369,7 +338,10 @@ footer{background:var(--dark);padding:16px 7%;display:flex;justify-content:space
   <div class="team-grid">
     <div class="tc">
       <div class="av av-e">EG</div>
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px"><h4>Erhan G&uuml;ng&ouml;r</h4><a href="https://www.linkedin.com/in/gunerhan/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:4px;font-size:11px;color:#0a66c2;font-weight:600;text-decoration:none">in <svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px">
+        <h4>Erhan G&uuml;ng&ouml;r</h4>
+        <a href="https://www.linkedin.com/in/gunerhan/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:4px;font-size:11px;color:#0a66c2;font-weight:600;text-decoration:none">in <svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
       <span class="tc-role">Founder &middot; Strategy &amp; Operations</span>
       <ul class="tc-pts">
         <li class="li-work">Scaled cross-border operations across 5 cities &amp; 2 countries as Chief of Staff</li>
@@ -379,7 +351,10 @@ footer{background:var(--dark);padding:16px 7%;display:flex;justify-content:space
     </div>
     <div class="tc">
       <div class="av av-er">ER</div>
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px"><h4>Erim G&ouml;khan</h4><a href="https://www.linkedin.com/in/mehmeterimgokhan/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:4px;font-size:11px;color:#0a66c2;font-weight:600;text-decoration:none">in <svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px">
+        <h4>Erim G&ouml;khan</h4>
+        <a href="https://www.linkedin.com/in/mehmeterimgokhan/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:4px;font-size:11px;color:#0a66c2;font-weight:600;text-decoration:none">in <svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
       <span class="tc-role">Frontend Developer</span>
       <ul class="tc-pts">
         <li class="li-work">30+ production applications shipped across web and mobile</li>
@@ -389,7 +364,10 @@ footer{background:var(--dark);padding:16px 7%;display:flex;justify-content:space
     </div>
     <div class="tc">
       <div class="av av-m">MD</div>
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px"><h4>Mustafa Demir</h4><a href="https://www.linkedin.com/in/seyit-mustafa-demir/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:4px;font-size:11px;color:#0a66c2;font-weight:600;text-decoration:none">in <svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px">
+        <h4>Mustafa Demir</h4>
+        <a href="https://www.linkedin.com/in/seyit-mustafa-demir/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:4px;font-size:11px;color:#0a66c2;font-weight:600;text-decoration:none">in <svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
       <span class="tc-role">Backend &amp; Agent Developer</span>
       <ul class="tc-pts">
         <li class="li-work">Production AI systems deployed at Turkey&rsquo;s largest telco</li>
@@ -404,7 +382,7 @@ footer{background:var(--dark);padding:16px 7%;display:flex;justify-content:space
   <div class="contact-inner">
     <div>
       <h2>Let&rsquo;s talk<br><em>opportunities.</em></h2>
-      <p class="contact-sub">We&rsquo;re in active growth phase across two markets with three live products. If you&rsquo;re interested in partnering or discussing investment, we&rsquo;d love to connect. We reply within 24 hours.</p>
+      <p class="contact-sub">We&rsquo;re in active growth phase across two markets with four live products. If you&rsquo;re interested in partnering or discussing investment, we&rsquo;d love to connect. We reply within 24 hours.</p>
     </div>
     <div class="contact-right">
       <a class="email-btn" id="ebtn" href="#">hello&#64;applicalgap.com</a>
