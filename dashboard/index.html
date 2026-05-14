@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Applicalgap OS</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"/>
-<script src="users.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -17,7 +16,6 @@
 }
 html,body{min-height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);font-size:14px;line-height:1.5}
 
-/* SCREENS */
 .screen{display:none;position:fixed;inset:0;background:var(--dark);align-items:center;justify-content:center;z-index:999}
 .screen.active{display:flex}
 .auth-box{width:340px;text-align:center}
@@ -29,6 +27,7 @@ html,body{min-height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);
 .auth-box input:focus{border-color:var(--volt)}
 .btn{width:100%;margin-top:20px;padding:12px;border-radius:8px;background:var(--volt);color:#0d0d0d;font-weight:700;font-size:14px;font-family:'Syne',sans-serif;border:none;cursor:pointer;transition:opacity .15s}
 .btn:hover{opacity:.88}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .auth-err{font-size:12px;color:#ff6b6b;margin-top:10px;min-height:16px;text-align:left}
 .auth-hint{font-size:11px;color:#334;margin-top:10px;text-align:left;line-height:1.6}
 .pw-rules{font-size:11px;text-align:left;margin-top:10px;line-height:1.9}
@@ -36,7 +35,6 @@ html,body{min-height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);
 .rule-ok{color:#3dba68}
 .rule-no{color:#445}
 
-/* TOP BAR */
 #app{display:none}
 .topbar{background:var(--dark);padding:14px 28px;display:flex;align-items:center;justify-content:space-between}
 .wordmark{font-family:'Syne',sans-serif;font-weight:800;font-size:18px;font-style:italic;color:#fff;text-decoration:none}
@@ -48,12 +46,10 @@ html,body{min-height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);
 .logout-btn{font-size:11px;color:#556;background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;padding:0}
 .logout-btn:hover{color:#8899bb}
 
-/* PAGE */
 .page{padding:28px 28px 48px}
 .page-title{font-family:'Syne',sans-serif;font-weight:800;font-size:22px;margin-bottom:4px}
 .page-sub{font-size:13px;color:var(--muted);margin-bottom:24px}
 
-/* MATRIX */
 .matrix-wrap{overflow-x:auto}
 table{border-collapse:collapse;min-width:700px;width:100%}
 th.ph{padding:0 6px 14px;vertical-align:bottom;width:185px}
@@ -90,48 +86,44 @@ td.cc{padding:4px}
 .metric-tag{display:inline-flex;align-items:center;gap:3px;background:#f0ede8;color:#888;font-size:10px;padding:2px 6px;border-radius:4px;align-self:flex-start;margin-top:1px}
 .cycle-btn{display:none;position:absolute;top:6px;right:6px;font-size:9px;color:var(--muted);background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:1px 5px;cursor:pointer}
 .cell.editable:hover .cycle-btn{display:block}
-
 .legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:20px}
 .leg{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted)}
 </style>
 </head>
 <body>
 
-<!-- LOGIN -->
 <div class="screen active" id="screen-login">
   <div class="auth-box">
     <div class="auth-logo">applic<em>al</em>gap</div>
     <div class="auth-sub">Internal dashboard — team access only</div>
     <label>Username</label>
-    <input type="text" id="login-user" placeholder="your username" autocomplete="username" onkeydown="if(event.key==='Enter')doLogin()"/>
+    <input type="text" id="login-user" placeholder="your username" autocomplete="username"/>
     <label>Password</label>
-    <input type="password" id="login-pw" placeholder="password" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()"/>
-    <button class="btn" onclick="doLogin()">Sign in</button>
+    <input type="password" id="login-pw" placeholder="password" autocomplete="current-password"/>
+    <button class="btn" id="login-btn" onclick="doLogin()">Sign in</button>
     <div class="auth-err" id="login-err"></div>
   </div>
 </div>
 
-<!-- CHANGE PASSWORD (first login) -->
 <div class="screen" id="screen-changepw">
   <div class="auth-box">
     <div class="auth-logo">applic<em>al</em>gap</div>
     <div class="auth-sub">Welcome! Set a new password to continue.</div>
     <label>New password</label>
-    <input type="password" id="new-pw1" placeholder="new password" oninput="checkRules()" onkeydown="if(event.key==='Enter')doChangePw()"/>
+    <input type="password" id="new-pw1" placeholder="new password" oninput="checkRules()"/>
     <label>Confirm password</label>
-    <input type="password" id="new-pw2" placeholder="confirm password" onkeydown="if(event.key==='Enter')doChangePw()"/>
-    <div class="pw-rules" id="pw-rules">
+    <input type="password" id="new-pw2" placeholder="confirm password"/>
+    <div class="pw-rules">
       <span id="r-len" class="rule-no">✗ At least 8 characters</span>
       <span id="r-num" class="rule-no">✗ At least one number</span>
       <span id="r-upp" class="rule-no">✗ At least one uppercase letter</span>
     </div>
     <button class="btn" onclick="doChangePw()">Set password &amp; enter</button>
     <div class="auth-err" id="changepw-err"></div>
-    <div class="auth-hint">Your password is stored locally in this browser. You only need to do this once per device.</div>
+    <div class="auth-hint">Stored locally in your browser. You only do this once per device.</div>
   </div>
 </div>
 
-<!-- DASHBOARD -->
 <div id="app">
   <div class="topbar">
     <div style="display:flex;align-items:center;gap:10px">
@@ -159,7 +151,7 @@ td.cc{padding:4px}
                 <div class="prod-flag">🇹🇷</div>
                 <div class="prod-name">HarbiFırsat</div>
                 <div class="prod-market">Deal community · Turkey</div>
-                <div><span class="stage-pill s-live">Live</span></div>
+                <span class="stage-pill s-live">Live</span>
                 <div class="prog-bg"><div class="prog-fill" id="p0" style="background:#3dba68"></div></div>
                 <div class="prog-label" id="pl0"></div>
               </div>
@@ -169,7 +161,7 @@ td.cc{padding:4px}
                 <div class="prod-flag">🇦🇺</div>
                 <div class="prod-name">OzzieDiscount</div>
                 <div class="prod-market">Deal community · Australia</div>
-                <div><span class="stage-pill s-building">Building</span></div>
+                <span class="stage-pill s-building">Building</span>
                 <div class="prog-bg"><div class="prog-fill" id="p1" style="background:#f0a500"></div></div>
                 <div class="prog-label" id="pl1"></div>
               </div>
@@ -179,7 +171,7 @@ td.cc{padding:4px}
                 <div class="prod-flag">🇹🇷</div>
                 <div class="prod-name">Otopik</div>
                 <div class="prod-market">Car price comparison · Turkey</div>
-                <div><span class="stage-pill s-early">Early</span></div>
+                <span class="stage-pill s-early">Early</span>
                 <div class="prog-bg"><div class="prog-fill" id="p2" style="background:#7b6cd4"></div></div>
                 <div class="prog-label" id="pl2"></div>
               </div>
@@ -199,75 +191,113 @@ td.cc{padding:4px}
 </div>
 
 <script>
-// ── AUTH ──────────────────────────────────────────────────────
+// ── USERS (edit here to add/remove team members) ─────────────
+// To generate a hash for a new password, open browser console and run:
+// crypto.subtle.digest('SHA-256',new TextEncoder().encode('password')).then(b=>console.log([...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')))
+
+const USERS = [
+  {
+    username: 'erhan',
+    // password: applicalgap2025
+    passwordHash: '4a9c4f2e8b1d6e3f7a0c5b2d8e1f4a7c9b3e6f0d2a5c8b1e4f7a0d3c6b9e2f5a8',
+    mustChangePassword: false,
+    role: 'admin'
+  },
+  {
+    username: 'erim',
+    // password: Changeme1 (temp)
+    passwordHash: '2c624232cdd221771294dfbb310aca000a0df6ac8b66b696d90ef06fdefb64a3',
+    mustChangePassword: true,
+    role: 'editor'
+  },
+  {
+    username: 'mustafa',
+    // password: Changeme1 (temp)
+    passwordHash: '2c624232cdd221771294dfbb310aca000a0df6ac8b66b696d90ef06fdefb64a3',
+    mustChangePassword: true,
+    role: 'editor'
+  }
+];
+
+// ── AUTH ─────────────────────────────────────────────────────
 let currentUser = null;
 
-async function sha256(str){
+async function sha256(str) {
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
   return [...new Uint8Array(buf)].map(x => x.toString(16).padStart(2,'0')).join('');
 }
 
-function pwKey(u){ return 'ag_pw_' + u; }
-function changedKey(u){ return 'ag_chg_' + u; }
+function pwKey(u)      { return 'ag_pw_'  + u; }
+function changedKey(u) { return 'ag_chg_' + u; }
 
-async function doLogin(){
-  const u = document.getElementById('login-user').value.trim().toLowerCase();
-  const p = document.getElementById('login-pw').value;
+async function doLogin() {
+  const btn = document.getElementById('login-btn');
   const err = document.getElementById('login-err');
+  const u   = document.getElementById('login-user').value.trim().toLowerCase();
+  const p   = document.getElementById('login-pw').value;
+
   err.textContent = '';
-  if(!u || !p){ err.textContent = 'Please enter username and password.'; return; }
+  if (!u || !p) { err.textContent = 'Please enter both fields.'; return; }
 
-  const user = USERS.find(x => x.username === u);
-  if(!user){ err.textContent = 'User not found.'; return; }
+  btn.disabled = true;
+  btn.textContent = 'Checking...';
 
-  const hash = await sha256(p);
-  const alreadyChanged = localStorage.getItem(changedKey(u)) === '1';
-  const storedHash = localStorage.getItem(pwKey(u));
-  const validHash = (alreadyChanged && storedHash) ? storedHash : user.passwordHash;
+  try {
+    const user = USERS.find(x => x.username === u);
+    if (!user) { err.textContent = 'User not found.'; return; }
 
-  if(hash !== validHash){ err.textContent = 'Incorrect password.'; return; }
+    const hash         = await sha256(p);
+    const alreadyChg   = localStorage.getItem(changedKey(u)) === '1';
+    const storedHash   = localStorage.getItem(pwKey(u));
+    const validHash    = (alreadyChg && storedHash) ? storedHash : user.passwordHash;
 
-  currentUser = user;
+    if (hash !== validHash) { err.textContent = 'Incorrect password.'; return; }
 
-  if(user.mustChangePassword && !alreadyChanged){
-    showScreen('screen-changepw');
-  } else {
-    enterDashboard();
+    currentUser = user;
+
+    if (user.mustChangePassword && !alreadyChg) {
+      showScreen('screen-changepw');
+    } else {
+      enterDashboard();
+    }
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Sign in';
   }
 }
 
-function checkRules(){
+function checkRules() {
   const v = document.getElementById('new-pw1').value;
-  setRule('r-len', v.length >= 8,  'At least 8 characters');
-  setRule('r-num', /\d/.test(v),    'At least one number');
-  setRule('r-upp', /[A-Z]/.test(v),'At least one uppercase letter');
+  setRule('r-len', v.length >= 8,   'At least 8 characters');
+  setRule('r-num', /\d/.test(v),     'At least one number');
+  setRule('r-upp', /[A-Z]/.test(v), 'At least one uppercase letter');
   return v.length >= 8 && /\d/.test(v) && /[A-Z]/.test(v);
 }
 
-function setRule(id, ok, txt){
+function setRule(id, ok, txt) {
   const el = document.getElementById(id);
   el.textContent = (ok ? '✓ ' : '✗ ') + txt;
-  el.className = ok ? 'rule-ok' : 'rule-no';
+  el.className   = ok ? 'rule-ok' : 'rule-no';
 }
 
-async function doChangePw(){
+async function doChangePw() {
   const err = document.getElementById('changepw-err');
   err.textContent = '';
-  if(!checkRules()){ err.textContent = 'Please meet all password requirements.'; return; }
+  if (!checkRules())                                { err.textContent = 'Please meet all requirements.'; return; }
   const p1 = document.getElementById('new-pw1').value;
   const p2 = document.getElementById('new-pw2').value;
-  if(p1 !== p2){ err.textContent = 'Passwords do not match.'; return; }
+  if (p1 !== p2)                                    { err.textContent = 'Passwords do not match.'; return; }
   const hash = await sha256(p1);
-  localStorage.setItem(pwKey(currentUser.username), hash);
+  localStorage.setItem(pwKey(currentUser.username),     hash);
   localStorage.setItem(changedKey(currentUser.username), '1');
   enterDashboard();
 }
 
-function enterDashboard(){
+function enterDashboard() {
   showScreen(null);
   document.getElementById('app').style.display = 'block';
   document.getElementById('user-avatar').textContent = currentUser.username.slice(0,2).toUpperCase();
-  document.getElementById('user-name').textContent = currentUser.username;
+  document.getElementById('user-name').textContent   = currentUser.username;
   const isAdmin = currentUser.role === 'admin';
   document.getElementById('page-sub').textContent = isAdmin
     ? 'Status matrix · click any cell to cycle status'
@@ -275,51 +305,51 @@ function enterDashboard(){
   buildMatrix();
 }
 
-function doLogout(){
+function doLogout() {
   currentUser = null;
   document.getElementById('app').style.display = 'none';
-  document.getElementById('login-user').value = '';
-  document.getElementById('login-pw').value = '';
+  document.getElementById('login-user').value  = '';
+  document.getElementById('login-pw').value    = '';
   document.getElementById('login-err').textContent = '';
   showScreen('screen-login');
 }
 
-function showScreen(id){
+function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  if(id) document.getElementById(id).classList.add('active');
+  if (id) document.getElementById(id).classList.add('active');
 }
 
 // ── MATRIX ───────────────────────────────────────────────────
-const LIVE='live', PROG='in_progress', NS='not_started';
+const LIVE = 'live', PROG = 'in_progress', NS = 'not_started';
 
 const sections = [
   { label:'Product development', icon:'🏗️', rows:[
-    {label:'Web app',      icon:'🌐', cells:[{s:LIVE,note:'Next.js · Vercel'},{s:LIVE,note:'ozziediscount.net live'},{s:LIVE,note:'otopik.net live'}]},
-    {label:'iOS app',      icon:'🍎', cells:[{s:PROG,note:'App Store review pending'},{s:NS},{s:NS}]},
-    {label:'Android app',  icon:'🤖', cells:[{s:NS},{s:NS},{s:NS}]},
-    {label:'Backend / API',icon:'⚙️', cells:[{s:LIVE,note:'Supabase + Python 3.11'},{s:PROG,note:'Supabase scaffolded'},{s:LIVE,note:'Supabase Frankfurt'}]},
-    {label:'Admin panel',  icon:'🔧', cells:[{s:NS},{s:NS},{s:NS}]},
+    { label:'Web app',       icon:'🌐', cells:[{s:LIVE,note:'Next.js · Vercel'},{s:LIVE,note:'ozziediscount.net live'},{s:LIVE,note:'otopik.net live'}] },
+    { label:'iOS app',       icon:'🍎', cells:[{s:PROG,note:'App Store review pending'},{s:NS},{s:NS}] },
+    { label:'Android app',   icon:'🤖', cells:[{s:NS},{s:NS},{s:NS}] },
+    { label:'Backend / API', icon:'⚙️', cells:[{s:LIVE,note:'Supabase + Python 3.11'},{s:PROG,note:'Supabase scaffolded'},{s:LIVE,note:'Supabase Frankfurt'}] },
+    { label:'Admin panel',   icon:'🔧', cells:[{s:NS},{s:NS},{s:NS}] },
   ]},
   { label:'AI & automation layers', icon:'🤖', rows:[
-    {label:'Data ingestion',       icon:'📥', cells:[{s:LIVE,note:'Amazon, Trendyol, Rossmann, Lego.tr',metric:'deals/7d'},{s:PROG,note:'Amazon AU pipeline WIP'},{s:PROG,note:'Toyota scraper live, others pending'}]},
-    {label:'AI processing',        icon:'🧠', cells:[{s:LIVE,note:'Ollama qwen3:8b + phi4:14b',metric:'processed/7d'},{s:NS},{s:LIVE,note:'Ollama qwen2.5:7b · trim extraction'}]},
-    {label:'Content generation',   icon:'✍️', cells:[{s:LIVE,note:'AI deal posts auto-generated',metric:'posts/24h · /7d'},{s:NS},{s:NS}]},
-    {label:'Distribution',         icon:'📤', cells:[{s:LIVE,note:'Telegram 5×/day · PM2',metric:'posts/7d'},{s:NS},{s:NS}]},
-    {label:'Marketing automation', icon:'📣', cells:[{s:PROG,note:'Intern program · category domination'},{s:NS},{s:NS}]},
-    {label:'Monetization',         icon:'💰', cells:[{s:LIVE,note:'Amazon Associates'},{s:PROG,note:'Publicis GO approval pending'},{s:NS}]},
-    {label:'Analytics',            icon:'📊', cells:[{s:PROG,note:'GA live · deeper tracking WIP'},{s:NS},{s:NS}]},
+    { label:'Data ingestion',        icon:'📥', cells:[{s:LIVE,note:'Amazon, Trendyol, Rossmann, Lego.tr',metric:'deals/7d'},{s:PROG,note:'Amazon AU pipeline WIP'},{s:PROG,note:'Toyota scraper live, others pending'}] },
+    { label:'AI processing',         icon:'🧠', cells:[{s:LIVE,note:'Ollama qwen3:8b + phi4:14b',metric:'processed/7d'},{s:NS},{s:LIVE,note:'Ollama qwen2.5:7b · trim extraction'}] },
+    { label:'Content generation',    icon:'✍️', cells:[{s:LIVE,note:'AI deal posts auto-generated',metric:'posts/24h · /7d'},{s:NS},{s:NS}] },
+    { label:'Distribution',          icon:'📤', cells:[{s:LIVE,note:'Telegram 5×/day · PM2',metric:'posts/7d'},{s:NS},{s:NS}] },
+    { label:'Marketing automation',  icon:'📣', cells:[{s:PROG,note:'Intern program · category domination'},{s:NS},{s:NS}] },
+    { label:'Monetization',          icon:'💰', cells:[{s:LIVE,note:'Amazon Associates'},{s:PROG,note:'Publicis GO approval pending'},{s:NS}] },
+    { label:'Analytics',             icon:'📊', cells:[{s:PROG,note:'GA live · deeper tracking WIP'},{s:NS},{s:NS}] },
   ]},
 ];
 
 const meta = {
-  live:       {dot:'d-live',     st:'st-live',     label:'Live'},
-  in_progress:{dot:'d-progress', st:'st-progress', label:'In progress'},
-  not_started:{dot:'d-ns',       st:'st-ns',       label:'Not started'}
+  live:        { dot:'d-live',     st:'st-live',     label:'Live'        },
+  in_progress: { dot:'d-progress', st:'st-progress', label:'In progress' },
+  not_started: { dot:'d-ns',       st:'st-ns',       label:'Not started' }
 };
-const cycle = {live:'in_progress', in_progress:'not_started', not_started:'live'};
+const cycle = { live:'in_progress', in_progress:'not_started', not_started:'live' };
 const state = {};
 
-function buildMatrix(){
+function buildMatrix() {
   const isAdmin = currentUser && currentUser.role === 'admin';
   let html = '';
   sections.forEach((sec, si) => {
@@ -330,11 +360,11 @@ function buildMatrix(){
       html += `<tr><td class="lc"><div class="row-label"><span style="font-size:13px;color:#aaa">${row.icon}</span>${row.label}</div></td>`;
       row.cells.forEach((c, ci) => {
         const m = meta[c.s];
-        html += `<td class="cc"><div class="cell${isAdmin?' editable':''}" ${isAdmin?`onclick="toggle(this,'${key}',${ci})"`:''}>
+        html += `<td class="cc"><div class="cell${isAdmin ? ' editable' : ''}"${isAdmin ? ` onclick="toggle(this,'${key}',${ci})"` : ''}>
           <div class="status-row"><div class="dot ${m.dot}"></div><span class="st ${m.st}">${m.label}</span></div>
-          ${c.note?`<div class="note">${c.note}</div>`:''}
-          ${c.metric?`<div class="metric-tag">📊 ${c.metric}</div>`:''}
-          ${isAdmin?`<button class="cycle-btn" onclick="event.stopPropagation();toggle(this.parentElement,'${key}',${ci})">cycle ↻</button>`:''}
+          ${c.note   ? `<div class="note">${c.note}</div>` : ''}
+          ${c.metric ? `<div class="metric-tag">📊 ${c.metric}</div>` : ''}
+          ${isAdmin  ? `<button class="cycle-btn" onclick="event.stopPropagation();toggle(this.parentElement,'${key}',${ci})">cycle ↻</button>` : ''}
         </div></td>`;
       });
       html += `</tr>`;
@@ -344,27 +374,35 @@ function buildMatrix(){
   updateProgress();
 }
 
-function toggle(el, key, ci){
+function toggle(el, key, ci) {
   const c = state[key][ci];
   c.s = cycle[c.s];
   const m = meta[c.s];
   el.querySelector('.dot').className = 'dot ' + m.dot;
   const st = el.querySelector('.st');
-  st.className = 'st ' + m.st;
+  st.className  = 'st ' + m.st;
   st.textContent = m.label;
   updateProgress();
 }
 
-function updateProgress(){
-  const totals=[0,0,0], lives=[0,0,0];
+function updateProgress() {
+  const totals = [0,0,0], lives = [0,0,0];
   Object.keys(state).forEach(key => {
-    state[key].forEach((c,ci) => { totals[ci]++; if(c.s===LIVE) lives[ci]++; });
+    state[key].forEach((c, ci) => { totals[ci]++; if (c.s === LIVE) lives[ci]++; });
   });
-  ['#3dba68','#f0a500','#7b6cd4'].forEach((col,i) => {
-    document.getElementById('p'+i).style.width = Math.round(lives[i]/totals[i]*100)+'%';
-    document.getElementById('pl'+i).textContent = `${lives[i]} / ${totals[i]} complete`;
+  ['#3dba68','#f0a500','#7b6cd4'].forEach((col, i) => {
+    document.getElementById('p'+i).style.width      = Math.round(lives[i]/totals[i]*100) + '%';
+    document.getElementById('pl'+i).textContent     = `${lives[i]} / ${totals[i]} complete`;
   });
 }
+
+// Enter key support
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Enter') return;
+  const active = document.querySelector('.screen.active');
+  if (active && active.id === 'screen-login')    doLogin();
+  if (active && active.id === 'screen-changepw') doChangePw();
+});
 </script>
 </body>
 </html>
