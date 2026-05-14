@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Applicalgap OS</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"/>
+<script src="users.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0d0d0d;--bg:#f0ede8;--volt:#c6ff00;--dark:#080e1c;
+  --card:#fff;--border:#dedad4;--muted:#888;
+  --green:#2d8a4e;--green-dot:#3dba68;
+  --amber:#9a6200;--amber-dot:#f0a500;
+  --gray-dot:#c0bdb8;--gray-text:#aaa;
+}
+html,body{min-height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);font-size:14px;line-height:1.5}
+
+/* SCREENS */
+.screen{display:none;position:fixed;inset:0;background:var(--dark);align-items:center;justify-content:center;z-index:999}
+.screen.active{display:flex}
+.auth-box{width:340px;text-align:center}
+.auth-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:24px;font-style:italic;color:#fff;margin-bottom:6px}
+.auth-logo em{color:var(--volt);font-style:inherit}
+.auth-sub{font-size:13px;color:#556;margin-bottom:28px}
+.auth-box label{display:block;text-align:left;font-size:12px;color:#8899bb;margin-bottom:5px;margin-top:14px;letter-spacing:.04em;text-transform:uppercase}
+.auth-box input{width:100%;padding:11px 14px;border-radius:8px;border:1.5px solid #1e2a40;background:#0f1826;color:#fff;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;transition:border-color .2s}
+.auth-box input:focus{border-color:var(--volt)}
+.btn{width:100%;margin-top:20px;padding:12px;border-radius:8px;background:var(--volt);color:#0d0d0d;font-weight:700;font-size:14px;font-family:'Syne',sans-serif;border:none;cursor:pointer;transition:opacity .15s}
+.btn:hover{opacity:.88}
+.auth-err{font-size:12px;color:#ff6b6b;margin-top:10px;min-height:16px;text-align:left}
+.auth-hint{font-size:11px;color:#334;margin-top:10px;text-align:left;line-height:1.6}
+.pw-rules{font-size:11px;text-align:left;margin-top:10px;line-height:1.9}
+.pw-rules span{display:block}
+.rule-ok{color:#3dba68}
+.rule-no{color:#445}
+
+/* TOP BAR */
+#app{display:none}
+.topbar{background:var(--dark);padding:14px 28px;display:flex;align-items:center;justify-content:space-between}
+.wordmark{font-family:'Syne',sans-serif;font-weight:800;font-size:18px;font-style:italic;color:#fff;text-decoration:none}
+.wordmark em{color:var(--volt);font-style:inherit}
+.topbar-os{color:#8899bb;font-family:'Syne',sans-serif;font-weight:700;font-size:13px;margin-left:8px}
+.topbar-right{display:flex;align-items:center;gap:14px}
+.user-pill{display:flex;align-items:center;gap:6px;background:#0f1826;border:1px solid #1e2a40;border-radius:20px;padding:4px 12px 4px 8px}
+.user-avatar{width:22px;height:22px;border-radius:50%;background:var(--volt);color:#0d0d0d;font-size:10px;font-weight:700;font-family:'Syne',sans-serif;display:flex;align-items:center;justify-content:center}
+.logout-btn{font-size:11px;color:#556;background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;padding:0}
+.logout-btn:hover{color:#8899bb}
+
+/* PAGE */
+.page{padding:28px 28px 48px}
+.page-title{font-family:'Syne',sans-serif;font-weight:800;font-size:22px;margin-bottom:4px}
+.page-sub{font-size:13px;color:var(--muted);margin-bottom:24px}
+
+/* MATRIX */
+.matrix-wrap{overflow-x:auto}
+table{border-collapse:collapse;min-width:700px;width:100%}
+th.ph{padding:0 6px 14px;vertical-align:bottom;width:185px}
+.prod-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:10px 12px}
+.prod-flag{font-size:15px;margin-bottom:4px}
+.prod-name{font-family:'Syne',sans-serif;font-weight:700;font-size:13px;margin-bottom:2px}
+.prod-market{font-size:11px;color:var(--muted);margin-bottom:8px}
+.stage-pill{display:inline-block;font-size:10px;font-weight:700;font-family:'Syne',sans-serif;padding:2px 8px;border-radius:20px;margin-bottom:8px}
+.s-live{background:#e8f5ee;color:#2d8a4e}
+.s-building{background:#fef3e0;color:#9a6200}
+.s-early{background:#ede8fe;color:#5b45c4}
+.prog-bg{height:3px;background:var(--border);border-radius:2px}
+.prog-fill{height:3px;border-radius:2px;transition:width .4s}
+.prog-label{font-size:10px;color:var(--muted);margin-top:3px}
+
+tr.sec-row td{padding:14px 0 4px;border:none}
+.sec-label{font-size:10px;font-weight:700;font-family:'Syne',sans-serif;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:5px}
+td.lc{padding:5px 10px 5px 0;vertical-align:middle;white-space:nowrap;width:160px}
+.row-label{font-size:12px;color:#555;display:flex;align-items:center;gap:6px}
+td.cc{padding:4px}
+.cell{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:8px 10px;min-height:48px;display:flex;flex-direction:column;gap:3px;position:relative;transition:border-color .15s,box-shadow .15s}
+.cell.editable{cursor:pointer}
+.cell.editable:hover{border-color:#bbb;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.status-row{display:flex;align-items:center;gap:5px}
+.dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.d-live{background:var(--green-dot)}
+.d-progress{background:var(--amber-dot)}
+.d-ns{background:var(--gray-dot)}
+.st{font-size:11px;font-weight:700;font-family:'Syne',sans-serif}
+.st-live{color:var(--green)}
+.st-progress{color:var(--amber)}
+.st-ns{color:var(--gray-text)}
+.note{font-size:10px;color:var(--muted);line-height:1.3}
+.metric-tag{display:inline-flex;align-items:center;gap:3px;background:#f0ede8;color:#888;font-size:10px;padding:2px 6px;border-radius:4px;align-self:flex-start;margin-top:1px}
+.cycle-btn{display:none;position:absolute;top:6px;right:6px;font-size:9px;color:var(--muted);background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:1px 5px;cursor:pointer}
+.cell.editable:hover .cycle-btn{display:block}
+
+.legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:20px}
+.leg{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div class="screen active" id="screen-login">
+  <div class="auth-box">
+    <div class="auth-logo">applic<em>al</em>gap</div>
+    <div class="auth-sub">Internal dashboard — team access only</div>
+    <label>Username</label>
+    <input type="text" id="login-user" placeholder="your username" autocomplete="username" onkeydown="if(event.key==='Enter')doLogin()"/>
+    <label>Password</label>
+    <input type="password" id="login-pw" placeholder="password" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()"/>
+    <button class="btn" onclick="doLogin()">Sign in</button>
+    <div class="auth-err" id="login-err"></div>
+  </div>
+</div>
+
+<!-- CHANGE PASSWORD (first login) -->
+<div class="screen" id="screen-changepw">
+  <div class="auth-box">
+    <div class="auth-logo">applic<em>al</em>gap</div>
+    <div class="auth-sub">Welcome! Set a new password to continue.</div>
+    <label>New password</label>
+    <input type="password" id="new-pw1" placeholder="new password" oninput="checkRules()" onkeydown="if(event.key==='Enter')doChangePw()"/>
+    <label>Confirm password</label>
+    <input type="password" id="new-pw2" placeholder="confirm password" onkeydown="if(event.key==='Enter')doChangePw()"/>
+    <div class="pw-rules" id="pw-rules">
+      <span id="r-len" class="rule-no">✗ At least 8 characters</span>
+      <span id="r-num" class="rule-no">✗ At least one number</span>
+      <span id="r-upp" class="rule-no">✗ At least one uppercase letter</span>
+    </div>
+    <button class="btn" onclick="doChangePw()">Set password &amp; enter</button>
+    <div class="auth-err" id="changepw-err"></div>
+    <div class="auth-hint">Your password is stored locally in this browser. You only need to do this once per device.</div>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="app">
+  <div class="topbar">
+    <div style="display:flex;align-items:center;gap:10px">
+      <a class="wordmark" href="/">applic<em>al</em>gap</a>
+      <span class="topbar-os">/ OS</span>
+    </div>
+    <div class="topbar-right">
+      <div class="user-pill">
+        <div class="user-avatar" id="user-avatar"></div>
+        <span id="user-name" style="color:#8899bb;font-size:12px"></span>
+      </div>
+      <button class="logout-btn" onclick="doLogout()">Sign out</button>
+    </div>
+  </div>
+  <div class="page">
+    <div class="page-title">Product OS</div>
+    <div class="page-sub" id="page-sub"></div>
+    <div class="matrix-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:160px"></th>
+            <th class="ph">
+              <div class="prod-card">
+                <div class="prod-flag">🇹🇷</div>
+                <div class="prod-name">HarbiFırsat</div>
+                <div class="prod-market">Deal community · Turkey</div>
+                <div><span class="stage-pill s-live">Live</span></div>
+                <div class="prog-bg"><div class="prog-fill" id="p0" style="background:#3dba68"></div></div>
+                <div class="prog-label" id="pl0"></div>
+              </div>
+            </th>
+            <th class="ph">
+              <div class="prod-card">
+                <div class="prod-flag">🇦🇺</div>
+                <div class="prod-name">OzzieDiscount</div>
+                <div class="prod-market">Deal community · Australia</div>
+                <div><span class="stage-pill s-building">Building</span></div>
+                <div class="prog-bg"><div class="prog-fill" id="p1" style="background:#f0a500"></div></div>
+                <div class="prog-label" id="pl1"></div>
+              </div>
+            </th>
+            <th class="ph">
+              <div class="prod-card">
+                <div class="prod-flag">🇹🇷</div>
+                <div class="prod-name">Otopik</div>
+                <div class="prod-market">Car price comparison · Turkey</div>
+                <div><span class="stage-pill s-early">Early</span></div>
+                <div class="prog-bg"><div class="prog-fill" id="p2" style="background:#7b6cd4"></div></div>
+                <div class="prog-label" id="pl2"></div>
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+    <div class="legend">
+      <div class="leg"><div class="dot d-live"></div> Live</div>
+      <div class="leg"><div class="dot d-progress"></div> In progress</div>
+      <div class="leg"><div class="dot d-ns"></div> Not started</div>
+      <div class="leg" style="margin-left:8px;font-size:11px;color:#aaa">📊 = live metrics in Phase 2</div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── AUTH ──────────────────────────────────────────────────────
+let currentUser = null;
+
+async function sha256(str){
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return [...new Uint8Array(buf)].map(x => x.toString(16).padStart(2,'0')).join('');
+}
+
+function pwKey(u){ return 'ag_pw_' + u; }
+function changedKey(u){ return 'ag_chg_' + u; }
+
+async function doLogin(){
+  const u = document.getElementById('login-user').value.trim().toLowerCase();
+  const p = document.getElementById('login-pw').value;
+  const err = document.getElementById('login-err');
+  err.textContent = '';
+  if(!u || !p){ err.textContent = 'Please enter username and password.'; return; }
+
+  const user = USERS.find(x => x.username === u);
+  if(!user){ err.textContent = 'User not found.'; return; }
+
+  const hash = await sha256(p);
+  const alreadyChanged = localStorage.getItem(changedKey(u)) === '1';
+  const storedHash = localStorage.getItem(pwKey(u));
+  const validHash = (alreadyChanged && storedHash) ? storedHash : user.passwordHash;
+
+  if(hash !== validHash){ err.textContent = 'Incorrect password.'; return; }
+
+  currentUser = user;
+
+  if(user.mustChangePassword && !alreadyChanged){
+    showScreen('screen-changepw');
+  } else {
+    enterDashboard();
+  }
+}
+
+function checkRules(){
+  const v = document.getElementById('new-pw1').value;
+  setRule('r-len', v.length >= 8,  'At least 8 characters');
+  setRule('r-num', /\d/.test(v),    'At least one number');
+  setRule('r-upp', /[A-Z]/.test(v),'At least one uppercase letter');
+  return v.length >= 8 && /\d/.test(v) && /[A-Z]/.test(v);
+}
+
+function setRule(id, ok, txt){
+  const el = document.getElementById(id);
+  el.textContent = (ok ? '✓ ' : '✗ ') + txt;
+  el.className = ok ? 'rule-ok' : 'rule-no';
+}
+
+async function doChangePw(){
+  const err = document.getElementById('changepw-err');
+  err.textContent = '';
+  if(!checkRules()){ err.textContent = 'Please meet all password requirements.'; return; }
+  const p1 = document.getElementById('new-pw1').value;
+  const p2 = document.getElementById('new-pw2').value;
+  if(p1 !== p2){ err.textContent = 'Passwords do not match.'; return; }
+  const hash = await sha256(p1);
+  localStorage.setItem(pwKey(currentUser.username), hash);
+  localStorage.setItem(changedKey(currentUser.username), '1');
+  enterDashboard();
+}
+
+function enterDashboard(){
+  showScreen(null);
+  document.getElementById('app').style.display = 'block';
+  document.getElementById('user-avatar').textContent = currentUser.username.slice(0,2).toUpperCase();
+  document.getElementById('user-name').textContent = currentUser.username;
+  const isAdmin = currentUser.role === 'admin';
+  document.getElementById('page-sub').textContent = isAdmin
+    ? 'Status matrix · click any cell to cycle status'
+    : 'Status matrix · view only';
+  buildMatrix();
+}
+
+function doLogout(){
+  currentUser = null;
+  document.getElementById('app').style.display = 'none';
+  document.getElementById('login-user').value = '';
+  document.getElementById('login-pw').value = '';
+  document.getElementById('login-err').textContent = '';
+  showScreen('screen-login');
+}
+
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  if(id) document.getElementById(id).classList.add('active');
+}
+
+// ── MATRIX ───────────────────────────────────────────────────
+const LIVE='live', PROG='in_progress', NS='not_started';
+
+const sections = [
+  { label:'Product development', icon:'🏗️', rows:[
+    {label:'Web app',      icon:'🌐', cells:[{s:LIVE,note:'Next.js · Vercel'},{s:LIVE,note:'ozziediscount.net live'},{s:LIVE,note:'otopik.net live'}]},
+    {label:'iOS app',      icon:'🍎', cells:[{s:PROG,note:'App Store review pending'},{s:NS},{s:NS}]},
+    {label:'Android app',  icon:'🤖', cells:[{s:NS},{s:NS},{s:NS}]},
+    {label:'Backend / API',icon:'⚙️', cells:[{s:LIVE,note:'Supabase + Python 3.11'},{s:PROG,note:'Supabase scaffolded'},{s:LIVE,note:'Supabase Frankfurt'}]},
+    {label:'Admin panel',  icon:'🔧', cells:[{s:NS},{s:NS},{s:NS}]},
+  ]},
+  { label:'AI & automation layers', icon:'🤖', rows:[
+    {label:'Data ingestion',       icon:'📥', cells:[{s:LIVE,note:'Amazon, Trendyol, Rossmann, Lego.tr',metric:'deals/7d'},{s:PROG,note:'Amazon AU pipeline WIP'},{s:PROG,note:'Toyota scraper live, others pending'}]},
+    {label:'AI processing',        icon:'🧠', cells:[{s:LIVE,note:'Ollama qwen3:8b + phi4:14b',metric:'processed/7d'},{s:NS},{s:LIVE,note:'Ollama qwen2.5:7b · trim extraction'}]},
+    {label:'Content generation',   icon:'✍️', cells:[{s:LIVE,note:'AI deal posts auto-generated',metric:'posts/24h · /7d'},{s:NS},{s:NS}]},
+    {label:'Distribution',         icon:'📤', cells:[{s:LIVE,note:'Telegram 5×/day · PM2',metric:'posts/7d'},{s:NS},{s:NS}]},
+    {label:'Marketing automation', icon:'📣', cells:[{s:PROG,note:'Intern program · category domination'},{s:NS},{s:NS}]},
+    {label:'Monetization',         icon:'💰', cells:[{s:LIVE,note:'Amazon Associates'},{s:PROG,note:'Publicis GO approval pending'},{s:NS}]},
+    {label:'Analytics',            icon:'📊', cells:[{s:PROG,note:'GA live · deeper tracking WIP'},{s:NS},{s:NS}]},
+  ]},
+];
+
+const meta = {
+  live:       {dot:'d-live',     st:'st-live',     label:'Live'},
+  in_progress:{dot:'d-progress', st:'st-progress', label:'In progress'},
+  not_started:{dot:'d-ns',       st:'st-ns',       label:'Not started'}
+};
+const cycle = {live:'in_progress', in_progress:'not_started', not_started:'live'};
+const state = {};
+
+function buildMatrix(){
+  const isAdmin = currentUser && currentUser.role === 'admin';
+  let html = '';
+  sections.forEach((sec, si) => {
+    html += `<tr class="sec-row"><td colspan="4"><div class="sec-label">${sec.icon} ${sec.label}</div></td></tr>`;
+    sec.rows.forEach((row, ri) => {
+      const key = `${si}-${ri}`;
+      state[key] = row.cells.map(c => ({...c}));
+      html += `<tr><td class="lc"><div class="row-label"><span style="font-size:13px;color:#aaa">${row.icon}</span>${row.label}</div></td>`;
+      row.cells.forEach((c, ci) => {
+        const m = meta[c.s];
+        html += `<td class="cc"><div class="cell${isAdmin?' editable':''}" ${isAdmin?`onclick="toggle(this,'${key}',${ci})"`:''}>
+          <div class="status-row"><div class="dot ${m.dot}"></div><span class="st ${m.st}">${m.label}</span></div>
+          ${c.note?`<div class="note">${c.note}</div>`:''}
+          ${c.metric?`<div class="metric-tag">📊 ${c.metric}</div>`:''}
+          ${isAdmin?`<button class="cycle-btn" onclick="event.stopPropagation();toggle(this.parentElement,'${key}',${ci})">cycle ↻</button>`:''}
+        </div></td>`;
+      });
+      html += `</tr>`;
+    });
+  });
+  document.getElementById('tbody').innerHTML = html;
+  updateProgress();
+}
+
+function toggle(el, key, ci){
+  const c = state[key][ci];
+  c.s = cycle[c.s];
+  const m = meta[c.s];
+  el.querySelector('.dot').className = 'dot ' + m.dot;
+  const st = el.querySelector('.st');
+  st.className = 'st ' + m.st;
+  st.textContent = m.label;
+  updateProgress();
+}
+
+function updateProgress(){
+  const totals=[0,0,0], lives=[0,0,0];
+  Object.keys(state).forEach(key => {
+    state[key].forEach((c,ci) => { totals[ci]++; if(c.s===LIVE) lives[ci]++; });
+  });
+  ['#3dba68','#f0a500','#7b6cd4'].forEach((col,i) => {
+    document.getElementById('p'+i).style.width = Math.round(lives[i]/totals[i]*100)+'%';
+    document.getElementById('pl'+i).textContent = `${lives[i]} / ${totals[i]} complete`;
+  });
+}
+</script>
+</body>
+</html>
